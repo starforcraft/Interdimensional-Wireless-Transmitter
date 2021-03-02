@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "connected=false,direction=down": {
+      "model": "creativewirelesstransmitter:block/disconnected"
+    },
+    "connected=true,direction=down": {
+      "model": "creativewirelesstransmitter:block/green_creative_wireless_transmitter"
+    },
+    "connected=false,direction=up": {
+      "model": "creativewirelesstransmitter:block/disconnected",
+      "x": 180
+    },
+    "connected=true,direction=up": {
+      "model": "creativewirelesstransmitter:block/green_creative_wireless_transmitter",
+      "x": 180
+    },
+    "connected=false,direction=north": {
+      "model": "creativewirelesstransmitter:block/disconnected",
+      "x": 90,
+      "y": 180
+    },
+    "connected=true,direction=north": {
+      "model": "creativewirelesstransmitter:block/green_creative_wireless_transmitter",
+      "x": 90,
+      "y": 180
+    },
+    "connected=false,direction=south": {
+      "model": "creativewirelesstransmitter:block/disconnected",
+      "x": 90
+    },
+    "connected=true,direction=south": {
+      "model": "creativewirelesstransmitter:block/green_creative_wireless_transmitter",
+      "x": 90
+    },
+    "connected=false,direction=west": {
+      "model": "creativewirelesstransmitter:block/disconnected",
+      "x": 90,
+      "y": 90
+    },
+    "connected=true,direction=west": {
+      "model": "creativewirelesstransmitter:block/green_creative_wireless_transmitter",
+      "x": 90,
+      "y": 90
+    },
+    "connected=false,direction=east": {
+      "model": "creativewirelesstransmitter:block/disconnected",
+      "x": 90,
+      "y": 270
+    },
+    "connected=true,direction=east": {
+      "model": "creativewirelesstransmitter:block/green_creative_wireless_transmitter",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

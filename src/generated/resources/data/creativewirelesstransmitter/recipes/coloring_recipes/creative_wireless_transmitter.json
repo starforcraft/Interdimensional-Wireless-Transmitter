@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "creativewirelesstransmitter",
+  "ingredients": [
+    {
+      "tag": "creativewirelesstransmitter:creative_wireless_transmitter"
+    },
+    {
+      "tag": "forge:dyes/light_blue"
+    }
+  ],
+  "result": {
+    "item": "creativewirelesstransmitter:creative_wireless_transmitter"
+  }
+}

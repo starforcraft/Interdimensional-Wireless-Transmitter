@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "creativewirelesstransmitter",
+  "ingredients": [
+    {
+      "tag": "creativewirelesstransmitter:creative_wireless_transmitter"
+    },
+    {
+      "tag": "forge:dyes/magenta"
+    }
+  ],
+  "result": {
+    "item": "creativewirelesstransmitter:magenta_creative_wireless_transmitter"
+  }
+}

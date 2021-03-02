@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "creativewirelesstransmitter:creative_wireless_transmitter"
+    },
+    "title": {
+      "translate": "advancements.creativewirelesstransmitter.creative_wireless"
+    },
+    "description": {
+      "translate": "advancements.creativewirelesstransmitter.creative_wireless.description"
+    }
+  },
+  "parent": "refinedstorage:wireless",
+  "criteria": {
+    "wireless_transmitter_in_inventory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "creativewirelesstransmitter:creative_wireless_transmitter"
+          }
+        ]
+      }
+    }
+  }
+}

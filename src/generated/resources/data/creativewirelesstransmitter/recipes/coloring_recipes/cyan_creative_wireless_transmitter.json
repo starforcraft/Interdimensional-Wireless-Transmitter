@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "creativewirelesstransmitter",
+  "ingredients": [
+    {
+      "tag": "creativewirelesstransmitter:creative_wireless_transmitter"
+    },
+    {
+      "tag": "forge:dyes/cyan"
+    }
+  ],
+  "result": {
+    "item": "creativewirelesstransmitter:cyan_creative_wireless_transmitter"
+  }
+}
