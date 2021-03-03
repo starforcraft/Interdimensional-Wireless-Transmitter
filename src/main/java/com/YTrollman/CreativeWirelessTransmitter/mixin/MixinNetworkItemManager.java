@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 import com.YTrollman.CreativeWirelessTransmitter.CreativeWirelessTransmitter;
-import com.YTrollman.CreativeWirelessTransmitter.node.ICreativeThing;
 import com.YTrollman.CreativeWirelessTransmitter.node.IPlaceHolder;
 import com.refinedmods.refinedstorage.api.network.INetwork;
 import com.refinedmods.refinedstorage.api.network.INetworkNodeGraphEntry;
@@ -24,7 +23,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.TranslationTextComponent;
 
 @Mixin(value = NetworkItemManager.class, remap = false)
-public abstract class MixinNetworkItemManager implements INetworkItemManager, ICreativeThing {
+public abstract class MixinNetworkItemManager implements INetworkItemManager {
 	
     private final INetwork network;
     private final Map<PlayerEntity, INetworkItem> items = new ConcurrentHashMap<>();

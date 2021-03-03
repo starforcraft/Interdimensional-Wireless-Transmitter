@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 
-public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implements IWirelessTransmitter, ICreativeThing, IPlaceHolder  {
+public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implements IWirelessTransmitter, IPlaceHolder  {
     public static final ResourceLocation ID = new ResourceLocation(CreativeWirelessTransmitter.MOD_ID, "creative_wireless_transmitter");
     
     public CreativeWirelessTransmitterNetworkNode(World world, BlockPos pos) {
