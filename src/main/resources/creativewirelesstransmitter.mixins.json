@@ -2,7 +2,6 @@
   "required": true,
   "package": "com.YTrollman.CreativeWirelessTransmitter.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "modid.refmap.json",
   "mixins": [
 	"MixinNetworkItemManager"
   ],
