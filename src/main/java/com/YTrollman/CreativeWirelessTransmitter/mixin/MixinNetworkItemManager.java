@@ -60,7 +60,6 @@ public abstract class MixinNetworkItemManager implements INetworkItemManager {
                     ((IWirelessTransmitter) node).getDimension() != player.getEntityWorld().func_234923_W_() 
                      && node instanceof IPlaceHolder) {
                 		inRange = true;
-                		CreativeWirelessTransmitter.LOGGER.info("asd2");
                 	
                 		break;
             	}
