@@ -35,7 +35,7 @@ public class CommonSetup {
 
     @SubscribeEvent
     public void onRegisterTiles(RegistryEvent.Register<TileEntityType<?>> e) {
-        e.getRegistry().register(registerTileDataParameters(TileEntityType.Builder.create(CreativeWirelessTransmitterTileEntity::new, ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.getBlocks()).build(null).setRegistryName(CreativeWirelessTransmitter.MOD_ID, "creative_wireless_transmitter")));
+        e.getRegistry().register(registerTileDataParameters(TileEntityType.Builder.of(CreativeWirelessTransmitterTileEntity::new, ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.getBlocks()).build(null).setRegistryName(CreativeWirelessTransmitter.MOD_ID, "creative_wireless_transmitter")));
     }
 
     private <T extends TileEntity> TileEntityType<T> registerTileDataParameters(TileEntityType<T> t) {

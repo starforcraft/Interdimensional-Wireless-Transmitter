@@ -1,7 +1,5 @@
 package com.YTrollman.CreativeWirelessTransmitter.block;
 
-import javax.annotation.Nullable;
-
 import com.YTrollman.CreativeWirelessTransmitter.container.CreativeWirelessTransmitterContainer;
 import com.YTrollman.CreativeWirelessTransmitter.registry.ModBlocks;
 import com.YTrollman.CreativeWirelessTransmitter.tileentity.CreativeWirelessTransmitterTileEntity;
@@ -10,7 +8,6 @@ import com.refinedmods.refinedstorage.block.ColoredNetworkBlock;
 import com.refinedmods.refinedstorage.container.factory.PositionalTileContainerProvider;
 import com.refinedmods.refinedstorage.util.BlockUtils;
 import com.refinedmods.refinedstorage.util.NetworkUtils;
-
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -27,13 +24,15 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
+import javax.annotation.Nullable;
+
 public class CreativeWirelessTransmitterBlock extends ColoredNetworkBlock {
-    private static final VoxelShape SHAPE_DOWN = makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 11.0D, 10.0D);
-    private static final VoxelShape SHAPE_UP = makeCuboidShape(6.0D, 5.0D, 6.0D, 10.0D, 16.0D, 10.0D);
-    private static final VoxelShape SHAPE_EAST = makeCuboidShape(5.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D);
-    private static final VoxelShape SHAPE_WEST = makeCuboidShape(0.0D, 6.0D, 6.0D, 11.0D, 10.0D, 10.0D);
-    private static final VoxelShape SHAPE_NORTH = makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 11.0D);
-    private static final VoxelShape SHAPE_SOUTH = makeCuboidShape(6.0D, 6.0D, 5.0D, 10.0D, 10.0D, 16.0D);
+    private static final VoxelShape SHAPE_DOWN = box(6.0D, 0.0D, 6.0D, 10.0D, 11.0D, 10.0D);
+    private static final VoxelShape SHAPE_UP = box(6.0D, 5.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+    private static final VoxelShape SHAPE_EAST = box(5.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D);
+    private static final VoxelShape SHAPE_WEST = box(0.0D, 6.0D, 6.0D, 11.0D, 10.0D, 10.0D);
+    private static final VoxelShape SHAPE_NORTH = box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 11.0D);
+    private static final VoxelShape SHAPE_SOUTH = box(6.0D, 6.0D, 5.0D, 10.0D, 10.0D, 16.0D);
     
     public CreativeWirelessTransmitterBlock() {
         super(BlockUtils.DEFAULT_ROCK_PROPERTIES);
@@ -57,7 +56,7 @@ public class CreativeWirelessTransmitterBlock extends ColoredNetworkBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
-        switch (state.get(getDirection().getProperty())) {
+        switch (state.getValue(getDirection().getProperty())) {
             case DOWN:
                 return SHAPE_DOWN;
             case UP:
@@ -77,13 +76,13 @@ public class CreativeWirelessTransmitterBlock extends ColoredNetworkBlock {
 	
     
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-        ActionResultType result = ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.changeBlockColor(state, player.getHeldItem(hand), world, pos, player);
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+        ActionResultType result = ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.changeBlockColor(state, player.getItemInHand(hand), world, pos, player);
         if (result != ActionResultType.PASS) {
             return result;
         }
 
-        if (!world.isRemote) {
+        if (!world.isClientSide) {
             return NetworkUtils.attemptModify(world, pos, player, () -> NetworkHooks.openGui(
                 (ServerPlayerEntity) player,
                 new PositionalTileContainerProvider<CreativeWirelessTransmitterTileEntity>(

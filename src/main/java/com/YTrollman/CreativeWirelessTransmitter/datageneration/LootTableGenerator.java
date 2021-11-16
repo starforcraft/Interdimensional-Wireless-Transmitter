@@ -42,7 +42,7 @@ public class LootTableGenerator extends LootTableProvider {
     private static class ModBlockLootTables extends BlockLootTables {
         @Override
         protected void addTables() {
-            ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.values().forEach(block -> registerDropSelfLootTable(block.get()));
+            ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.values().forEach(block -> dropSelf(block.get()));
         }
     }
 }

@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class CreativeWirelessTransmitterTileEntity extends NetworkNodeTile<CreativeWirelessTransmitterNetworkNode> {
-    public static final TileDataParameter<Integer, CreativeWirelessTransmitterTileEntity> RANGE = new TileDataParameter<>(DataSerializers.VARINT, 0, t -> t.getNode().getRange());
+    public static final TileDataParameter<Integer, CreativeWirelessTransmitterTileEntity> RANGE = new TileDataParameter<>(DataSerializers.INT, 0, t -> t.getNode().getRange());
 
     public CreativeWirelessTransmitterTileEntity() {
         super(ModTileEntityTypes.CREATIVE_WIRELESS_TRANSMITTER);

@@ -43,9 +43,9 @@ public class ClientSetup {
 
     @SubscribeEvent
     public void onClientSetup(FMLClientSetupEvent e) {
-        ScreenManager.registerFactory(ModContainers.CREATIVE_WIRELESS_TRANSMITTER, CreativeWirelessTransmitterScreen::new);
+        ScreenManager.register(ModContainers.CREATIVE_WIRELESS_TRANSMITTER, CreativeWirelessTransmitterScreen::new);
 
-        ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.values().forEach(block -> RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout()));
+        ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.values().forEach(block -> RenderTypeLookup.setRenderLayer(block.get(), RenderType.cutout()));
     }
 
     @SubscribeEvent

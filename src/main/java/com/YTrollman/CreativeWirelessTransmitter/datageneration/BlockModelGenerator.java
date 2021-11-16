@@ -32,7 +32,7 @@ public class BlockModelGenerator extends BlockStateProvider {
             String folderName = ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.get(ColorMap.DEFAULT_COLOR).getId().getPath();
 
             models.CreativeWirelessTransmitterBlock(block, state -> {
-                if (Boolean.FALSE.equals(state.get(NetworkNodeBlock.CONNECTED))) {
+                if (Boolean.FALSE.equals(state.getValue(NetworkNodeBlock.CONNECTED))) {
                     return models.createCreativeWirelessTransmitterModel(
                         "block/" + folderName + "/disconnected",
                         resourceLocation(folderName, "disconnected")

@@ -12,6 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 
+import com.refinedmods.refinedstorage.api.network.INetworkNodeVisitor.Operator;
+
 public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implements IWirelessTransmitter, IPlaceHolder  {
     public static final ResourceLocation ID = new ResourceLocation(CreativeWirelessTransmitter.MOD_ID, "creative_wireless_transmitter");
     
@@ -46,7 +48,7 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
     
     @Override
     public RegistryKey<World> getDimension() {
-        return world.func_234923_W_();
+        return world.dimension();
     }
 
     @Override
@@ -55,12 +57,12 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
     }
 
     @Override
-    protected boolean canConduct(Direction direction) {
+    public boolean canConduct(Direction direction) {
         return Direction.DOWN.equals(direction);
     }
 
     @Override
     public void visit(Operator operator) {
-        operator.apply(world, pos.offset(Direction.DOWN), Direction.UP);
+        operator.apply(world, pos.relative(Direction.DOWN), Direction.UP);
     }
 }
