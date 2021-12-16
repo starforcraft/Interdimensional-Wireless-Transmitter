@@ -4,21 +4,18 @@ import com.YTrollman.CreativeWirelessTransmitter.CreativeWirelessTransmitter;
 import com.YTrollman.CreativeWirelessTransmitter.config.CreativeWirelessTransmitterConfig;
 import com.refinedmods.refinedstorage.api.network.IWirelessTransmitter;
 import com.refinedmods.refinedstorage.apiimpl.network.node.NetworkNode;
-
-import net.minecraft.util.Direction;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
-
-import com.refinedmods.refinedstorage.api.network.INetworkNodeVisitor.Operator;
 
 public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implements IWirelessTransmitter, IPlaceHolder  {
     public static final ResourceLocation ID = new ResourceLocation(CreativeWirelessTransmitter.MOD_ID, "creative_wireless_transmitter");
     
-    public CreativeWirelessTransmitterNetworkNode(World world, BlockPos pos) {
-        super(world, pos);
+    public CreativeWirelessTransmitterNetworkNode(Level level, BlockPos pos) {
+        super(level, pos);
     }
 
     @Override
@@ -45,10 +42,10 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
     public BlockPos getOrigin() {
         return pos;
     }
-    
+
     @Override
-    public RegistryKey<World> getDimension() {
-        return world.dimension();
+    public ResourceKey<Level> getDimension() {
+        return level.dimension();
     }
 
     @Override
@@ -63,6 +60,6 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
 
     @Override
     public void visit(Operator operator) {
-        operator.apply(world, pos.relative(Direction.DOWN), Direction.UP);
+        operator.apply(level, pos.relative(Direction.DOWN), Direction.UP);
     }
 }

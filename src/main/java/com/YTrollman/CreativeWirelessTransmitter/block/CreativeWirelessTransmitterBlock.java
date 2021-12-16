@@ -1,28 +1,28 @@
 package com.YTrollman.CreativeWirelessTransmitter.block;
 
-import com.YTrollman.CreativeWirelessTransmitter.container.CreativeWirelessTransmitterContainer;
+import com.YTrollman.CreativeWirelessTransmitter.container.CreativeWirelessTransmitterContainerMenu;
 import com.YTrollman.CreativeWirelessTransmitter.registry.ModBlocks;
-import com.YTrollman.CreativeWirelessTransmitter.tileentity.CreativeWirelessTransmitterTileEntity;
+import com.YTrollman.CreativeWirelessTransmitter.blockentity.CreativeWirelessTransmitterBlockEntity;
 import com.refinedmods.refinedstorage.block.BlockDirection;
 import com.refinedmods.refinedstorage.block.ColoredNetworkBlock;
-import com.refinedmods.refinedstorage.container.factory.PositionalTileContainerProvider;
+import com.refinedmods.refinedstorage.container.factory.BlockEntityMenuProvider;
 import com.refinedmods.refinedstorage.util.BlockUtils;
 import com.refinedmods.refinedstorage.util.NetworkUtils;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 
@@ -50,12 +50,12 @@ public class CreativeWirelessTransmitterBlock extends ColoredNetworkBlock {
 
     @Nullable
     @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new CreativeWirelessTransmitterTileEntity();
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new CreativeWirelessTransmitterBlockEntity(pos, state);
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         switch (state.getValue(getDirection().getProperty())) {
             case DOWN:
                 return SHAPE_DOWN;
@@ -70,30 +70,30 @@ public class CreativeWirelessTransmitterBlock extends ColoredNetworkBlock {
             case EAST:
                 return SHAPE_EAST;
             default:
-                return VoxelShapes.empty();
+                return Shapes.empty();
         }
     }
-	
-    
+
     @Override
-    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-        ActionResultType result = ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.changeBlockColor(state, player.getItemInHand(hand), world, pos, player);
-        if (result != ActionResultType.PASS) {
+    @SuppressWarnings("deprecation")
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        InteractionResult result = ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.changeBlockColor(state, player.getItemInHand(hand), level, pos, player);
+        if (result != InteractionResult.PASS) {
             return result;
         }
 
-        if (!world.isClientSide) {
-            return NetworkUtils.attemptModify(world, pos, player, () -> NetworkHooks.openGui(
-                (ServerPlayerEntity) player,
-                new PositionalTileContainerProvider<CreativeWirelessTransmitterTileEntity>(
-                    new TranslationTextComponent("gui.refinedstorage.wireless_transmitter"),
-                    (tile, windowId, inventory, p) -> new CreativeWirelessTransmitterContainer(tile, player, windowId),
+        if (!level.isClientSide) {
+            return NetworkUtils.attemptModify(level, pos, player, () -> NetworkHooks.openGui(
+                    (ServerPlayer) player,
+                    new BlockEntityMenuProvider<CreativeWirelessTransmitterBlockEntity>(
+                            new TranslatableComponent(getDescriptionId()),
+                            (blockEntity, windowId, inventory, p) -> new CreativeWirelessTransmitterContainerMenu(blockEntity, player, windowId),
+                            pos
+                    ),
                     pos
-                ),
-                pos
             ));
         }
 
-        return ActionResultType.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 }

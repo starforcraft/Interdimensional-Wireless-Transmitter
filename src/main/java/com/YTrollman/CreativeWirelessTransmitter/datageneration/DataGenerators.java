@@ -1,9 +1,8 @@
 package com.YTrollman.CreativeWirelessTransmitter.datageneration;
 
 import com.YTrollman.CreativeWirelessTransmitter.CreativeWirelessTransmitter;
-
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 public class DataGenerators {
     @SubscribeEvent

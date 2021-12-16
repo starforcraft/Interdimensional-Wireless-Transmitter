@@ -1,17 +1,16 @@
 package com.YTrollman.CreativeWirelessTransmitter.registry;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.YTrollman.CreativeWirelessTransmitter.CreativeWirelessTransmitter;
 import com.YTrollman.CreativeWirelessTransmitter.block.CreativeWirelessTransmitterBlock;
 import com.refinedmods.refinedstorage.util.ColorMap;
-
-import net.minecraft.block.Block;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModBlocks {
 

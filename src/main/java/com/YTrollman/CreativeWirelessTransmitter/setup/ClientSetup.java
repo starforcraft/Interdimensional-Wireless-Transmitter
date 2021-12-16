@@ -1,7 +1,5 @@
 package com.YTrollman.CreativeWirelessTransmitter.setup;
 
-import java.util.function.BiConsumer;
-
 import com.YTrollman.CreativeWirelessTransmitter.CreativeWirelessTransmitter;
 import com.YTrollman.CreativeWirelessTransmitter.gui.screen.CreativeWirelessTransmitterScreen;
 import com.YTrollman.CreativeWirelessTransmitter.registry.ModBlocks;
@@ -9,16 +7,17 @@ import com.YTrollman.CreativeWirelessTransmitter.registry.ModContainers;
 import com.refinedmods.refinedstorage.render.BakedModelOverrideRegistry;
 import com.refinedmods.refinedstorage.render.model.FullbrightBakedModel;
 import com.refinedmods.refinedstorage.util.ColorMap;
-
-import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.item.DyeColor;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.function.BiConsumer;
 
 public class ClientSetup {
 
@@ -43,9 +42,9 @@ public class ClientSetup {
 
     @SubscribeEvent
     public void onClientSetup(FMLClientSetupEvent e) {
-        ScreenManager.register(ModContainers.CREATIVE_WIRELESS_TRANSMITTER, CreativeWirelessTransmitterScreen::new);
+        MenuScreens.register(ModContainers.CREATIVE_WIRELESS_TRANSMITTER, CreativeWirelessTransmitterScreen::new);
 
-        ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.values().forEach(block -> RenderTypeLookup.setRenderLayer(block.get(), RenderType.cutout()));
+        ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.values().forEach(block -> ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout()));
     }
 
     @SubscribeEvent

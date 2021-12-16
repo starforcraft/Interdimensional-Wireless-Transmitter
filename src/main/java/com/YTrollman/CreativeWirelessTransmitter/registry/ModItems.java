@@ -1,16 +1,15 @@
 package com.YTrollman.CreativeWirelessTransmitter.registry;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.YTrollman.CreativeWirelessTransmitter.CreativeWirelessTransmitter;
 import com.refinedmods.refinedstorage.util.ColorMap;
-
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModItems {
 
