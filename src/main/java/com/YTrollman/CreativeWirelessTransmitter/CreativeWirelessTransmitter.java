@@ -2,12 +2,12 @@ package com.YTrollman.CreativeWirelessTransmitter;
 
 import com.YTrollman.CreativeWirelessTransmitter.config.Config;
 import com.YTrollman.CreativeWirelessTransmitter.datageneration.DataGenerators;
+import com.YTrollman.CreativeWirelessTransmitter.registry.ModBlockEntities;
 import com.YTrollman.CreativeWirelessTransmitter.registry.ModBlocks;
+import com.YTrollman.CreativeWirelessTransmitter.registry.ModContainerMenus;
 import com.YTrollman.CreativeWirelessTransmitter.registry.ModItems;
 import com.YTrollman.CreativeWirelessTransmitter.setup.ClientSetup;
 import com.YTrollman.CreativeWirelessTransmitter.setup.CommonSetup;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -24,8 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod("creativewirelesstransmitter")
-public class CreativeWirelessTransmitter
-{
+public class CreativeWirelessTransmitter {
     public static final String MOD_ID = "creativewirelesstransmitter";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     
@@ -41,9 +40,10 @@ public class CreativeWirelessTransmitter
         ModItems.register();
         
         FMLJavaModLoadingContext.get().getModEventBus().addListener(commonSetup::onCommonSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(BlockEntityType.class, commonSetup::onRegisterTiles);
-        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(MenuType.class, commonSetup::onRegisterContainers);
         FMLJavaModLoadingContext.get().getModEventBus().register(new DataGenerators());
+
+        ModContainerMenus.REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModBlockEntities.REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
         
         Config.loadConfig(Config.client_config, FMLPaths.CONFIGDIR.get().resolve("creative_wireless_transmitter-client.toml").toString());
         
@@ -51,19 +51,16 @@ public class CreativeWirelessTransmitter
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+    private void setup(final FMLCommonSetupEvent event) {
     	
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) 
-    {
+    private void doClientStuff(final FMLClientSetupEvent event) {
     	
     }
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
+    public void onServerStarting(ServerStartingEvent event) {
     	
     }
 }

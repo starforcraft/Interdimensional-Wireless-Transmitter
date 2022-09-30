@@ -1,0 +1,6 @@
+{
+	"parent": "creativewirelesstransmitter:block/creative_wireless_transmitter",
+	"textures": {
+		"0": "creativewirelesstransmitter:block/blue_creative_wireless_transmitter"
+	}
+}

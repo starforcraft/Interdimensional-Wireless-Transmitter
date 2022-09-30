@@ -13,13 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModBlocks {
-
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CreativeWirelessTransmitter.MOD_ID);
 
     public static final ColorMap<CreativeWirelessTransmitterBlock> CREATIVE_WIRELESS_TRANSMITTER = new ColorMap<>(BLOCKS);
 
-    public static final List<RegistryObject<? extends Block>> COLORED_BLOCKS = new ArrayList<>();
-    
     static {
         CREATIVE_WIRELESS_TRANSMITTER.registerBlocks("creative_wireless_transmitter", CreativeWirelessTransmitterBlock::new);
     }

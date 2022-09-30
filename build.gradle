@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://files.minecraftforge.net/maven' }
         maven { url='https://repo.spongepowered.org/maven' }
         mavenCentral()
     }
@@ -15,14 +15,13 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
 repositories {
-  	maven {
-    	name = "Progwml6 maven"
-    	url = "https://dvs1.progwml6.com/files/maven/"
-  	}
-  	maven {
-    	name = "ModMaven"
-    	url = "https://modmaven.k-4u.nl"
-  	}
+    maven {
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
+    }
     maven {
         url = uri("https://maven.pkg.github.com/refinedmods/refinedstorage")
         /* As of december 2021, GitHub packages requires authentication.
@@ -33,7 +32,7 @@ repositories {
          */
         credentials {
             username = "anything"
-            password = "\u0067hp_pnP5hVDYXXhhXwe21IEkrUzGjquUJL0xjLzb"
+            password = "\u0067hp_oGjcDFCn8jeTzIj4Ke9pLoEVtpnZMP4VQgaX"
         }
     }
 }
@@ -53,7 +52,6 @@ minecraft {
         client {
             workingDirectory project.file('run')
             arg "-mixin.config=creativewirelesstransmitter.mixins.json"
-	        //jvmArg "-Dmixin.env.disableRefMap=true"
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
@@ -69,7 +67,6 @@ minecraft {
         server {
             workingDirectory project.file('run')
             arg "-mixin.config=creativewirelesstransmitter.mixins.json"
-	        //jvmArg "-Dmixin.env.disableRefMap=true"
 	    
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
@@ -110,15 +107,13 @@ mixin {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    compileOnly fg.deobf("mezz.jei:jei-1.18.1:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18.1:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.19.2-forge:${jei_version}")
 
-    implementation fg.deobf("com.refinedmods:refinedstorage:1.10.0-beta.2") {
+    implementation fg.deobf("com.refinedmods:refinedstorage:1.11.0") {
         transitive false
     }
 }
 
-// Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
         attributes([
@@ -135,14 +130,3 @@ jar {
 }
 
 jar.finalizedBy('reobfJar') 
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven { url "file:///${project.projectDir}/mcmodsrepo" }
-    }
-}

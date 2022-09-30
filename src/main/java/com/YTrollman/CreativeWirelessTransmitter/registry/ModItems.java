@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModItems {
-
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CreativeWirelessTransmitter.MOD_ID);
     
     private static final List<Runnable> LATE_REGISTRATION = new ArrayList<>();

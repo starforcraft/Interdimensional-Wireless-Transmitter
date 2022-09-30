@@ -26,10 +26,10 @@ public class CreativeWirelessTransmitterScreen extends BaseScreen<CreativeWirele
     }
 
     @Override
-    public void renderBackground(PoseStack matrixStack, int x, int y, int mouseX, int mouseY) {
+    public void renderBackground(PoseStack poseStack, int x, int y, int mouseX, int mouseY) {
         bindTexture(CreativeWirelessTransmitter.MOD_ID, "gui/creative_wireless_transmitter.png");
 
-        blit(matrixStack, x, y, 0, 0, imageWidth, imageHeight);
+        blit(poseStack, x, y, 0, 0, imageWidth, imageHeight);
     }
 
     @Override

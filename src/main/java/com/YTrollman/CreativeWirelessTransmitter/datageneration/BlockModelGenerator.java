@@ -22,30 +22,34 @@ public class BlockModelGenerator extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-    	genCreativeWirelessTransmitterModels();
+        genCubeAllCutoutModels(ModBlocks.CREATIVE_WIRELESS_TRANSMITTER);
     }
 
-    private void genCreativeWirelessTransmitterModels() {
-        ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.forEach((color, registryObject) -> {
+    private <T extends Block> void genCubeAllCutoutModels(ColorMap<T> blockMap) {
+        blockMap.forEach((color, registryObject) -> {
             Block block = registryObject.get();
-            String folderName = ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.get(ColorMap.DEFAULT_COLOR).getId().getPath();
+            String folderName = blockMap.get(ColorMap.DEFAULT_COLOR).getId().getPath();
 
-            models.CreativeWirelessTransmitterBlock(block, state -> {
+            models.simpleBlockStateModel(block, state -> {
                 if (Boolean.FALSE.equals(state.getValue(NetworkNodeBlock.CONNECTED))) {
-                    return models.createCreativeWirelessTransmitterModel(
-                        "block/" + folderName + "/disconnected",
-                        resourceLocation(folderName, "disconnected")
+                    return models.createCubeAllCutoutModel(
+                            "block/" + folderName + "/disconnected",
+                            resourceLocation(folderName, folderName),
+                            resourceLocation(folderName, folderName),
+                            resourceLocation(folderName, "cutouts/disconnected")
                     );
                 } else {
-                    ModelFile model = models.createCreativeWirelessTransmitterModel(
-                        "block/" + folderName + "/" + color,
-                        resourceLocation(folderName, "" + color)
+                    ModelFile model = models.createCubeAllCutoutModel(
+                            "block/" + folderName + "/" + color,
+                            resourceLocation(folderName, folderName),
+                            resourceLocation(folderName, folderName),
+                            resourceLocation(folderName, "cutouts/" + color)
                     );
 
                     simpleBlockItem(block, model);
                     return model;
                 }
-            }, 0);
+            });
         });
     }
 

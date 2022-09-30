@@ -9,7 +9,7 @@ import com.refinedmods.refinedstorage.container.factory.BlockEntityMenuProvider;
 import com.refinedmods.refinedstorage.util.BlockUtils;
 import com.refinedmods.refinedstorage.util.NetworkUtils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -75,7 +75,6 @@ public class CreativeWirelessTransmitterBlock extends ColoredNetworkBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         InteractionResult result = ModBlocks.CREATIVE_WIRELESS_TRANSMITTER.changeBlockColor(state, player.getItemInHand(hand), level, pos, player);
         if (result != InteractionResult.PASS) {
@@ -83,10 +82,10 @@ public class CreativeWirelessTransmitterBlock extends ColoredNetworkBlock {
         }
 
         if (!level.isClientSide) {
-            return NetworkUtils.attemptModify(level, pos, player, () -> NetworkHooks.openGui(
+            return NetworkUtils.attemptModify(level, pos, player, () -> NetworkHooks.openScreen(
                     (ServerPlayer) player,
                     new BlockEntityMenuProvider<CreativeWirelessTransmitterBlockEntity>(
-                            new TranslatableComponent(getDescriptionId()),
+                            Component.translatable(getDescriptionId()),
                             (blockEntity, windowId, inventory, p) -> new CreativeWirelessTransmitterContainerMenu(blockEntity, player, windowId),
                             pos
                     ),

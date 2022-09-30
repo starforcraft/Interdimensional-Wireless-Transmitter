@@ -10,7 +10,7 @@ import com.refinedmods.refinedstorage.api.network.item.INetworkItemProvider;
 import com.refinedmods.refinedstorage.api.network.node.INetworkNode;
 import com.refinedmods.refinedstorage.apiimpl.network.item.NetworkItemManager;
 import com.refinedmods.refinedstorage.inventory.player.PlayerSlot;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
@@ -29,7 +29,7 @@ public abstract class MixinNetworkItemManager implements INetworkItemManager {
     public MixinNetworkItemManager(INetwork network) {
         this.network = network;
     }
-    
+
     /**
      * @author
      */
@@ -68,7 +68,7 @@ public abstract class MixinNetworkItemManager implements INetworkItemManager {
         }
 
         if (!inRange) {
-            player.sendMessage(new TranslatableComponent("misc.refinedstorage.network_item.out_of_range"), player.getUUID());
+            player.sendSystemMessage(Component.translatable("misc.refinedstorage.network_item.out_of_range"));
 
             return;
         }
