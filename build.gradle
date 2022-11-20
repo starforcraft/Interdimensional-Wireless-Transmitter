@@ -110,10 +110,10 @@ mixin {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    compileOnly fg.deobf("mezz.jei:jei-1.18.1:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18.1:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-1.18.2:${jei_version}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:${jei_version}")
 
-    implementation fg.deobf("com.refinedmods:refinedstorage:1.10.0-beta.2") {
+    implementation fg.deobf("com.refinedmods:refinedstorage:1.10.3") {
         transitive false
     }
 }

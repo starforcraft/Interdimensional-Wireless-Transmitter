@@ -12,12 +12,14 @@
   },
   "parent": "refinedstorage:wireless",
   "criteria": {
-    "wireless_transmitter_in_inventory": {
+    "creative_wireless_transmitter_in_inventory": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "creativewirelesstransmitter:creative_wireless_transmitter"
+            "items": [
+              "creativewirelesstransmitter:creative_wireless_transmitter"
+            ]
           }
         ]
       }
