@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.YTrollman.CreativeWirelessTransmitter.mixin",
+  "package": "com.ultramega.creativewirelesstransmitter.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
 	"MixinNetworkItemManager"
