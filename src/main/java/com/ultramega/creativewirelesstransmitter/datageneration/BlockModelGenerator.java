@@ -1,10 +1,9 @@
 package com.ultramega.creativewirelesstransmitter.datageneration;
 
-import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
-import com.ultramega.creativewirelesstransmitter.registry.ModBlocks;
 import com.refinedmods.refinedstorage.block.NetworkNodeBlock;
 import com.refinedmods.refinedstorage.util.ColorMap;
-import net.minecraft.data.DataGenerator;
+import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
+import com.ultramega.creativewirelesstransmitter.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;

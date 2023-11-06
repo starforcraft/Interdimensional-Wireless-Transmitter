@@ -1,9 +1,9 @@
 package com.ultramega.creativewirelesstransmitter.registry;
 
-import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
-import com.ultramega.creativewirelesstransmitter.blockentity.CreativeWirelessTransmitterBlockEntity;
 import com.refinedmods.refinedstorage.blockentity.data.BlockEntitySynchronizationManager;
 import com.refinedmods.refinedstorage.blockentity.data.BlockEntitySynchronizationSpec;
+import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
+import com.ultramega.creativewirelesstransmitter.blockentity.CreativeWirelessTransmitterBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;

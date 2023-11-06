@@ -1,8 +1,8 @@
 package com.ultramega.creativewirelesstransmitter.registry;
 
+import com.refinedmods.refinedstorage.util.ColorMap;
 import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
 import com.ultramega.creativewirelesstransmitter.block.CreativeWirelessTransmitterBlock;
-import com.refinedmods.refinedstorage.util.ColorMap;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,10 +16,7 @@ public class ModBlocks {
     static {
         CREATIVE_WIRELESS_TRANSMITTER.registerBlocks("creative_wireless_transmitter", CreativeWirelessTransmitterBlock::new);
     }
-    
-    private ModBlocks() {
-    }
-    
+
     public static void register() {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }

@@ -1,6 +1,7 @@
 {
-	"itemGroup.creativewirelesstransmiter": "Kreativer Funksender",
+	"itemGroup.creativewirelesstransmitter": "Kreativer Funksender",
 	"block.creativewirelesstransmitter.creative_wireless_transmitter": "Kreativer Funksender",
-	"advancements.creativewirelesstransmitter.creative_wireless": "Man cheatet nicht...",
+	"gui.creativewirelesstransmitter.creative_wireless_transmitter.distance": "Unendlich",
+	"advancements.creativewirelesstransmitter.creative_wireless": "Warum cheatest du bro?",
 	"advancements.creativewirelesstransmitter.creative_wireless.description": "Übertrage ein Kreatives Netzwerksignal mit einem Funksender durch Dimensionen mit unendlicher Reichweite"
 }

@@ -1,6 +1,5 @@
 package com.ultramega.creativewirelesstransmitter.mixin;
 
-import com.ultramega.creativewirelesstransmitter.node.IPlaceHolder;
 import com.refinedmods.refinedstorage.api.network.INetwork;
 import com.refinedmods.refinedstorage.api.network.INetworkNodeGraphEntry;
 import com.refinedmods.refinedstorage.api.network.IWirelessTransmitter;
@@ -10,28 +9,33 @@ import com.refinedmods.refinedstorage.api.network.item.INetworkItemProvider;
 import com.refinedmods.refinedstorage.api.network.node.INetworkNode;
 import com.refinedmods.refinedstorage.apiimpl.network.item.NetworkItemManager;
 import com.refinedmods.refinedstorage.inventory.player.PlayerSlot;
+import com.ultramega.creativewirelesstransmitter.node.CreativeWirelessTransmitterNetworkNode;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.*;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Mixin(value = NetworkItemManager.class, remap = false)
+@Mixin(NetworkItemManager.class)
 public abstract class MixinNetworkItemManager implements INetworkItemManager {
-	
-    private final INetwork network;
-    private final Map<Player, INetworkItem> items = new ConcurrentHashMap<>();
+    @Mutable
+    @Final
+    @Shadow
+    private INetwork network;
+    @Final
+    @Shadow
+    private Map<Player, INetworkItem> items = new ConcurrentHashMap<>();
 
     public MixinNetworkItemManager(INetwork network) {
         this.network = network;
     }
 
     /**
-     * @author
+     * @author Ultramega
+     * @reason Infinite Range
      */
     @Overwrite
     public void open(Player player, ItemStack stack, PlayerSlot slot) {
@@ -40,12 +44,18 @@ public abstract class MixinNetworkItemManager implements INetworkItemManager {
         for (INetworkNodeGraphEntry entry : network.getNodeGraph().all()) {
             INetworkNode node = entry.getNode();
 
-            if (node instanceof IWirelessTransmitter &&
+            if(node instanceof CreativeWirelessTransmitterNetworkNode &&
+                    network.canRun() &&
+                    node.isActive()) {
+                inRange = true;
+
+                break;
+            }
+
+            if (node instanceof IWirelessTransmitter transmitter &&
                     network.canRun() &&
                     node.isActive() &&
                     ((IWirelessTransmitter) node).getDimension() == player.getCommandSenderWorld().dimension()) {
-                IWirelessTransmitter transmitter = (IWirelessTransmitter) node;
-
                 Vec3 pos = player.position();
 
                 double distance = Math.sqrt(Math.pow(transmitter.getOrigin().getX() - pos.x(), 2) + Math.pow(transmitter.getOrigin().getY() - pos.y(), 2) + Math.pow(transmitter.getOrigin().getZ() - pos.z(), 2));
@@ -55,15 +65,6 @@ public abstract class MixinNetworkItemManager implements INetworkItemManager {
 
                     break;
                 }
-            }
-            else if (node instanceof IWirelessTransmitter &&
-                    network.canRun() &&
-                    node.isActive() &&
-                    ((IWirelessTransmitter) node).getDimension() != player.getCommandSenderWorld().dimension()
-                    && node instanceof IPlaceHolder) {
-                inRange = true;
-
-                break;
             }
         }
 

@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreativeWirelessTransmitter.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> TAB_CREATIVEWIRELESSTRANSMITTER = TABS.register(CreativeWirelessTransmitter.MOD_ID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.creativewirelesstransmiter")).icon(() -> new ItemStack(ModItems.CREATIVE_WIRELESS_TRANSMITTER.get(DyeColor.BLUE).get())).displayItems((featureFlags, output) -> {
+    public static final RegistryObject<CreativeModeTab> TAB_CREATIVEWIRELESSTRANSMITTER = TABS.register(CreativeWirelessTransmitter.MOD_ID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.creativewirelesstransmitter")).icon(() -> new ItemStack(ModItems.CREATIVE_WIRELESS_TRANSMITTER.get(DyeColor.BLUE).get())).displayItems((featureFlags, output) -> {
         for (DyeColor color : DyeColor.values()) {
             output.accept(new ItemStack(ModItems.CREATIVE_WIRELESS_TRANSMITTER.get(color).get()));
         }

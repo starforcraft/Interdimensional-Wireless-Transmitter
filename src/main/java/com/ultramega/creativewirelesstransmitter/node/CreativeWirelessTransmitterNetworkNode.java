@@ -1,9 +1,9 @@
 package com.ultramega.creativewirelesstransmitter.node;
 
-import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
-import com.ultramega.creativewirelesstransmitter.config.CreativeWirelessTransmitterConfig;
 import com.refinedmods.refinedstorage.api.network.IWirelessTransmitter;
 import com.refinedmods.refinedstorage.apiimpl.network.node.NetworkNode;
+import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
+import com.ultramega.creativewirelesstransmitter.config.CreativeWirelessTransmitterConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -11,9 +11,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
 
-public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implements IWirelessTransmitter, IPlaceHolder  {
+public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implements IWirelessTransmitter {
     public static final ResourceLocation ID = new ResourceLocation(CreativeWirelessTransmitter.MOD_ID, "creative_wireless_transmitter");
-    
+
     public CreativeWirelessTransmitterNetworkNode(Level level, BlockPos pos) {
         super(level, pos);
     }
@@ -28,14 +28,9 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
         return ID;
     }
 
-    public boolean isCreative()
-    {
-    	return true;
-    }
-    
     @Override
     public int getRange() {
-        return 2147483647;
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -55,7 +50,7 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
 
     @Override
     public boolean canConduct(Direction direction) {
-        return Direction.DOWN.equals(direction);
+        return getDirection() == direction;
     }
 
     @Override

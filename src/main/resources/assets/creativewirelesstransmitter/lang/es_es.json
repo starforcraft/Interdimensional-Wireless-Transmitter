@@ -1,6 +1,7 @@
 {
 	"itemGroup.creativewirelesstransmitter": "Transmisor Inalámbrico Creativo",
 	"block.creativewirelesstransmitter.creative_wireless_transmitter": "Transmisor Inalámbrico Creativo",
+	"gui.creativewirelesstransmitter.creative_wireless_transmitter.distance": "Infinita",
 	"advancements.creativewirelesstransmitter.creative_wireless": "¿Por qué estás engañando hermano?",
 	"advancements.creativewirelesstransmitter.creative_wireless.description": "Transmita una señal de red con un Transmisor Inalámbrico Creativo a través de dimensiones con alcance infinito"
 }

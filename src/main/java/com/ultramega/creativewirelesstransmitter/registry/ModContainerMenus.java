@@ -1,9 +1,9 @@
 package com.ultramega.creativewirelesstransmitter.registry;
 
+import com.refinedmods.refinedstorage.container.factory.BlockEntityContainerFactory;
 import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
 import com.ultramega.creativewirelesstransmitter.blockentity.CreativeWirelessTransmitterBlockEntity;
 import com.ultramega.creativewirelesstransmitter.container.CreativeWirelessTransmitterContainerMenu;
-import com.refinedmods.refinedstorage.container.factory.BlockEntityContainerFactory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.registries.DeferredRegister;

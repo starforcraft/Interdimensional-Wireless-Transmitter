@@ -6,16 +6,11 @@ import com.ultramega.creativewirelesstransmitter.registry.*;
 import com.ultramega.creativewirelesstransmitter.setup.ClientSetup;
 import com.ultramega.creativewirelesstransmitter.setup.CommonSetup;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
@@ -25,11 +20,11 @@ import org.apache.logging.log4j.Logger;
 public class CreativeWirelessTransmitter {
     public static final String MOD_ID = "creativewirelesstransmitter";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-    
+
     public CreativeWirelessTransmitter() {
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientSetup::new);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.client_config);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.common_config);
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -39,10 +34,10 @@ public class CreativeWirelessTransmitter {
         ModBlocks.register();
         ModContainerMenus.REGISTRY.register(bus);
         ModBlockEntities.REGISTRY.register(bus);
-        
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(commonSetup::onCommonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().register(new DataGenerators());
-        
-        Config.loadConfig(Config.client_config, FMLPaths.CONFIGDIR.get().resolve("creative_wireless_transmitter-client.toml").toString());
+
+        Config.loadConfig(Config.common_config, FMLPaths.CONFIGDIR.get().resolve(CreativeWirelessTransmitter.MOD_ID + "-common.toml").toString());
     }
 }
