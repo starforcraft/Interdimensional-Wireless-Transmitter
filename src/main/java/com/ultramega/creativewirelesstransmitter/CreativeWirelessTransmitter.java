@@ -1,43 +1,40 @@
 package com.ultramega.creativewirelesstransmitter;
 
-import com.ultramega.creativewirelesstransmitter.config.Config;
+import com.ultramega.creativewirelesstransmitter.config.ServerConfig;
 import com.ultramega.creativewirelesstransmitter.datageneration.DataGenerators;
-import com.ultramega.creativewirelesstransmitter.registry.*;
+import com.ultramega.creativewirelesstransmitter.registry.ModBlockEntities;
+import com.ultramega.creativewirelesstransmitter.registry.ModBlocks;
+import com.ultramega.creativewirelesstransmitter.registry.ModContainerMenus;
+import com.ultramega.creativewirelesstransmitter.registry.ModItems;
 import com.ultramega.creativewirelesstransmitter.setup.ClientSetup;
 import com.ultramega.creativewirelesstransmitter.setup.CommonSetup;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLEnvironment;
 
 @Mod(CreativeWirelessTransmitter.MOD_ID)
-public class CreativeWirelessTransmitter {
+public final class CreativeWirelessTransmitter {
     public static final String MOD_ID = "creativewirelesstransmitter";
-    public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
+    public static final ServerConfig SERVER_CONFIG = new ServerConfig();
 
-    public CreativeWirelessTransmitter() {
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientSetup::new);
+    public CreativeWirelessTransmitter(IEventBus eventBus) {
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            eventBus.addListener(ClientSetup::registerMenuScreens);
+        }
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.common_config);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SERVER_CONFIG.getSpec());
 
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
-        CommonSetup commonSetup = new CommonSetup();
-        ModCreativeTabs.TABS.register(bus);
-        ModItems.register();
-        ModBlocks.register();
-        ModContainerMenus.REGISTRY.register(bus);
-        ModBlockEntities.REGISTRY.register(bus);
+        eventBus.addListener(CommonSetup::onCommonSetup);
+        eventBus.addListener(CommonSetup::onRegister);
+        eventBus.register(new DataGenerators());
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(commonSetup::onCommonSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().register(new DataGenerators());
-
-        Config.loadConfig(Config.common_config, FMLPaths.CONFIGDIR.get().resolve(CreativeWirelessTransmitter.MOD_ID + "-common.toml").toString());
+        ModContainerMenus.REGISTRY.register(eventBus);
+        ModBlockEntities.REGISTRY.register(eventBus);
     }
 }

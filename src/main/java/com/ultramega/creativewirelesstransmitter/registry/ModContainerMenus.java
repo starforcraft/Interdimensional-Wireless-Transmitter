@@ -4,14 +4,14 @@ import com.refinedmods.refinedstorage.container.factory.BlockEntityContainerFact
 import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
 import com.ultramega.creativewirelesstransmitter.blockentity.CreativeWirelessTransmitterBlockEntity;
 import com.ultramega.creativewirelesstransmitter.container.CreativeWirelessTransmitterContainerMenu;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ModContainerMenus {
-    public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.MENU_TYPES, CreativeWirelessTransmitter.MOD_ID);
+public final class ModContainerMenus {
+    public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.MENU, CreativeWirelessTransmitter.MOD_ID);
 
-    public static final RegistryObject<MenuType<CreativeWirelessTransmitterContainerMenu>> CREATIVE_WIRELESS_TRANSMITTER = REGISTRY.register("creative_wireless_transmitter", () -> IForgeMenuType.create(new BlockEntityContainerFactory<CreativeWirelessTransmitterContainerMenu, CreativeWirelessTransmitterBlockEntity>((windowId, inv, blockEntity) -> new CreativeWirelessTransmitterContainerMenu(blockEntity, inv.player, windowId))));
+    public static final DeferredHolder<MenuType<?>, MenuType<CreativeWirelessTransmitterContainerMenu>> CREATIVE_WIRELESS_TRANSMITTER = REGISTRY.register("creative_wireless_transmitter", () -> IMenuTypeExtension.create(new BlockEntityContainerFactory<CreativeWirelessTransmitterContainerMenu, CreativeWirelessTransmitterBlockEntity>((windowId, inv, blockEntity) -> new CreativeWirelessTransmitterContainerMenu(blockEntity, inv.player, windowId))));
 }

@@ -33,7 +33,7 @@
 				"up": {"uv": [4, 0, 5, 2], "rotation": 270, "texture": "#0", "emissivity": 15},
 				"down": {"uv": [4, 0, 5, 2], "rotation": 270, "texture": "#0", "emissivity": 15}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -65,7 +65,7 @@
 				"up": {"uv": [1, 0, 2, 2], "rotation": 270, "texture": "#0", "emissivity": 15},
 				"down": {"uv": [1, 0, 2, 2], "rotation": 270, "texture": "#0", "emissivity": 15}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -97,7 +97,7 @@
 				"up": {"uv": [7, 0, 11, 4], "texture": "#0", "emissivity": 15},
 				"down": {"uv": [7, 0, 11, 4], "texture": "#0", "emissivity": 15}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -115,7 +115,7 @@
 				"up": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -133,7 +133,7 @@
 				"up": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -151,7 +151,7 @@
 				"up": {"uv": [0, 0, 0, 4], "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -169,7 +169,7 @@
 				"up": {"uv": [0, 0, 0, 4], "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -187,7 +187,7 @@
 				"up": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -205,7 +205,7 @@
 				"up": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -223,7 +223,7 @@
 				"up": {"uv": [0, 0, 0, 4], "rotation": 180, "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "rotation": 180, "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -241,7 +241,7 @@
 				"up": {"uv": [0, 0, 0, 4], "rotation": 180, "texture": "#missing"},
 				"down": {"uv": [0, 0, 0, 4], "rotation": 180, "texture": "#missing"}
 			},
-			"forge_data": {
+			"neoforge_data": {
 				"block_light": 15,
 				"sky_light": 15
 			}
@@ -249,12 +249,12 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"translation": [0, 3, 2],
-			"scale": [0.55, 0.55, 0.55]
+			"translation": [0, 6, 2],
+			"scale": [0.75, 0.75, 0.75]
 		},
 		"thirdperson_lefthand": {
-			"translation": [0, 3, 1.75],
-			"scale": [0.55, 0.55, 0.55]
+			"translation": [0, 6, 1.75],
+			"scale": [0.75, 0.75, 0.75]
 		},
 		"firstperson_righthand": {
 			"rotation": [0, -90, 25],
@@ -272,7 +272,8 @@
 		},
 		"gui": {
 			"rotation": [30, 225, 0],
-			"scale": [0.625, 0.625, 0.625]
+			"translation": [0, 1, 0],
+			"scale": [1, 1, 1]
 		},
 		"head": {
 			"rotation": [0, 180, 0],

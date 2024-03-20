@@ -1,23 +1,23 @@
 package com.ultramega.creativewirelesstransmitter.registry;
 
-import com.refinedmods.refinedstorage.util.ColorMap;
+import com.refinedmods.refinedstorage.util.BlockColorMap;
 import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
 import com.ultramega.creativewirelesstransmitter.block.CreativeWirelessTransmitterBlock;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ModBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CreativeWirelessTransmitter.MOD_ID);
+public final class ModBlocks {
+    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, CreativeWirelessTransmitter.MOD_ID);
 
-    public static final ColorMap<CreativeWirelessTransmitterBlock> CREATIVE_WIRELESS_TRANSMITTER = new ColorMap<>(BLOCKS);
+    public static final BlockColorMap<CreativeWirelessTransmitterBlock> CREATIVE_WIRELESS_TRANSMITTER = new BlockColorMap<>(BLOCKS);
 
     static {
         CREATIVE_WIRELESS_TRANSMITTER.registerBlocks("creative_wireless_transmitter", CreativeWirelessTransmitterBlock::new);
     }
 
-    public static void register() {
-        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    public static void register(IEventBus bus) {
+        BLOCKS.register(bus);
     }
 }

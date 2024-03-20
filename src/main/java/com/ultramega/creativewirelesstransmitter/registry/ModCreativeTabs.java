@@ -1,20 +1,38 @@
 package com.ultramega.creativewirelesstransmitter.registry;
 
+import com.refinedmods.refinedstorage.util.ColorMap;
 import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
-public class ModCreativeTabs {
-    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreativeWirelessTransmitter.MOD_ID);
+public final class ModCreativeTabs {
+    public static void register(RegisterEvent.RegisterHelper<CreativeModeTab> helper) {
+        helper.register(new ResourceLocation(CreativeWirelessTransmitter.MOD_ID, "general"), CreativeModeTab.builder()
+                .title(Component.translatable("itemGroup." + CreativeWirelessTransmitter.MOD_ID))
+                .icon(() -> new ItemStack(ModItems.CREATIVE_WIRELESS_TRANSMITTER.get(ColorMap.DEFAULT_COLOR).get()))
+                .displayItems((params, output) -> ModCreativeTabs.append(output))
+                .build());
+    }
 
-    public static final RegistryObject<CreativeModeTab> TAB_CREATIVEWIRELESSTRANSMITTER = TABS.register(CreativeWirelessTransmitter.MOD_ID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.creativewirelesstransmitter")).icon(() -> new ItemStack(ModItems.CREATIVE_WIRELESS_TRANSMITTER.get(DyeColor.BLUE).get())).displayItems((featureFlags, output) -> {
+
+    public static void append(CreativeModeTab.Output output) {
+        add(output, ModItems.CREATIVE_WIRELESS_TRANSMITTER);
         for (DyeColor color : DyeColor.values()) {
             output.accept(new ItemStack(ModItems.CREATIVE_WIRELESS_TRANSMITTER.get(color).get()));
         }
-    }).build());
+    }
+
+    private static void add(CreativeModeTab.Output output, ColorMap<Item, ? extends Item> cm) {
+        cm.values().forEach(c -> add(output, c));
+    }
+
+    private static void add(CreativeModeTab.Output output, DeferredHolder<Item, ? extends Item> ro) {
+        output.accept(ro.get());
+    }
 }

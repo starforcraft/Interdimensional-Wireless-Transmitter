@@ -1,22 +1,21 @@
 package com.ultramega.creativewirelesstransmitter.registry;
 
-import com.refinedmods.refinedstorage.util.ColorMap;
+import com.refinedmods.refinedstorage.util.ItemColorMap;
 import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
-import net.minecraft.world.item.BlockItem;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CreativeWirelessTransmitter.MOD_ID);
+public final class ModItems {
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, CreativeWirelessTransmitter.MOD_ID);
 
     private static final List<Runnable> LATE_REGISTRATION = new ArrayList<>();
 
-    public static final ColorMap<BlockItem> CREATIVE_WIRELESS_TRANSMITTER = new ColorMap<>(ITEMS, LATE_REGISTRATION);
+    public static final ItemColorMap CREATIVE_WIRELESS_TRANSMITTER = new ItemColorMap(ITEMS, LATE_REGISTRATION);
 
     static {
         CREATIVE_WIRELESS_TRANSMITTER.registerItemsFromBlocks(ModBlocks.CREATIVE_WIRELESS_TRANSMITTER);
@@ -24,10 +23,7 @@ public class ModItems {
         LATE_REGISTRATION.forEach(Runnable::run);
     }
 
-    private ModItems() {
-    }
-
-    public static void register() {
-        ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    public static void register(IEventBus bus) {
+        ITEMS.register(bus);
     }
 }

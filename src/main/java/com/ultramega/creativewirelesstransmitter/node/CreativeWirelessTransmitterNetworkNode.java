@@ -3,13 +3,12 @@ package com.ultramega.creativewirelesstransmitter.node;
 import com.refinedmods.refinedstorage.api.network.IWirelessTransmitter;
 import com.refinedmods.refinedstorage.apiimpl.network.node.NetworkNode;
 import com.ultramega.creativewirelesstransmitter.CreativeWirelessTransmitter;
-import com.ultramega.creativewirelesstransmitter.config.CreativeWirelessTransmitterConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandler;
 
 public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implements IWirelessTransmitter {
     public static final ResourceLocation ID = new ResourceLocation(CreativeWirelessTransmitter.MOD_ID, "creative_wireless_transmitter");
@@ -20,7 +19,7 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
 
     @Override
     public int getEnergyUsage() {
-        return CreativeWirelessTransmitterConfig.CREATIVE_WIRELESS_TRANSMITTER_ENERGY_CONSUME.get();
+        return CreativeWirelessTransmitter.SERVER_CONFIG.getCreativeWirelessTransmitterEnergyConsume();
     }
 
     @Override
@@ -41,11 +40,6 @@ public class CreativeWirelessTransmitterNetworkNode extends NetworkNode implemen
     @Override
     public ResourceKey<Level> getDimension() {
         return level.dimension();
-    }
-
-    @Override
-    public IItemHandler getDrops() {
-        return null;
     }
 
     @Override
