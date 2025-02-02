@@ -1,0 +1,12 @@
+{
+  "mod.creative_wireless_transmitter": "Transmetteur sans fil créatif",
+  "block.creativewirelesstransmitter.creative_wireless_transmitter": "Transmetteur sans fil créatif",
+  "gui.creativewirelesstransmitter.creative_wireless_transmitter.distance": "Infini",
+  "item.creativewirelesstransmitter.creative_wireless_transmitter.help": "Fournit un accès au réseau sans fil pour des objets comme la grille sans fil. A une portée infini et fonctionne entre les dimensions",
+  "text.autoconfig.creativewirelesstransmitter.option.creativeWirelessTransmitter": "Transmetteur sans fil créatif",
+  "text.autoconfig.creativewirelesstransmitter.option.creativeWirelessTransmitter.tooltip": "Configuration du Transmetteur sans fil créatif.",
+  "text.autoconfig.creativewirelesstransmitter.option.creativeWirelessTransmitter.energyUsage": "Consommation d'énergie",
+  "text.autoconfig.creativewirelesstransmitter.option.creativeWirelessTransmitter.energyUsage.tooltip": "L'énergie consommée par le Transmetteur sans fil créatif.",
+  "advancements.creativewirelesstransmitter.creative_wireless_transmitter": ">>PUISSANCE<< INTERDIMENSIONELLE",
+  "advancements.creativewirelesstransmitter.creative_wireless_transmitter.description": "Transmettre un signal réseau avec un Transmetteur sans fil créatif entre les dimensions avec une portée infni"
+}
