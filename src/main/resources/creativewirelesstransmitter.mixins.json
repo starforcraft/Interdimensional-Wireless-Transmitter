@@ -1,9 +1,0 @@
-{
-  "required": true,
-  "package": "com.ultramega.creativewirelesstransmitter.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "mixins": [
-	"MixinNetworkItemManager"
-  ],
-  "minVersion": "0.8"
-}

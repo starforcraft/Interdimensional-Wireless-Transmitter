@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "creativewirelesstransmitter",
+  "version": "${version}",
+  "name": "Creative Wireless Transmitter",
+  "description": "Creative Wireless Transmitter is an addon for Refined Storage which adds a cross-dimensional transmitter with infinite range.",
+  "authors": [
+    "Ultramega"
+  ],
+  "contact": {
+    "sources": "https://github.com/starforcraft/Creative-Wireless-Transmitter",
+    "issues": "https://github.com/starforcraft/Creative-Wireless-Transmitter/issues"
+  },
+  "icon": "logo.png",
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.ultramega.creativewirelesstransmitter.fabric.ModInitializerImpl"
+    ],
+    "client": [
+      "com.ultramega.creativewirelesstransmitter.fabric.ClientModInitializerImpl"
+    ],
+    "refinedstorage_plugin": [
+      "com.ultramega.creativewirelesstransmitter.fabric.ModInitializerImpl"
+    ],
+    "modmenu": [
+      "com.ultramega.creativewirelesstransmitter.fabric.ModMenuApiImpl"
+    ]
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/WpUmcmUayN"
+      },
+      "parent": "refinedstorage"
+    }
+  },
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric-api": "*",
+    "minecraft": "~1.21",
+    "refinedstorage": ">=2.0.0-milestone.4.10",
+    "java": ">=21",
+    "cloth-config2": "*",
+    "team_reborn_energy": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}
