@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "active=false,direction=down": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/inactive"
+    },
+    "active=false,direction=east": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/inactive",
+      "x": 90,
+      "y": 270
+    },
+    "active=false,direction=north": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/inactive",
+      "x": 90,
+      "y": 180
+    },
+    "active=false,direction=south": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/inactive",
+      "x": 90
+    },
+    "active=false,direction=up": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/inactive",
+      "x": 180
+    },
+    "active=false,direction=west": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/inactive",
+      "x": 90,
+      "y": 90
+    },
+    "active=true,direction=down": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/blue"
+    },
+    "active=true,direction=east": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/blue",
+      "x": 90,
+      "y": 270
+    },
+    "active=true,direction=north": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/blue",
+      "x": 90,
+      "y": 180
+    },
+    "active=true,direction=south": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/blue",
+      "x": 90
+    },
+    "active=true,direction=up": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/blue",
+      "x": 180
+    },
+    "active=true,direction=west": {
+      "model": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/blue",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

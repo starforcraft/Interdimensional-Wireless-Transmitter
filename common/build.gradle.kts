@@ -23,7 +23,7 @@ refinedarchitect {
 }
 
 base {
-    archivesName.set("creativewirelesstransmitter-common")
+    archivesName.set("interdimensionalwirelesstransmitter-common")
 }
 
 val refinedstorageVersion: String by project

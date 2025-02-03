@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "interdimensionalwirelesstransmitter:interdimensional_wireless_transmitter"
+    },
+    "title": {
+      "translate": "advancements.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter"
+    },
+    "description": {
+      "translate": "advancements.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.description"
+    }
+  },
+  "parent": "refinedstorage:wireless",
+  "criteria": {
+    "interdimensional_wireless_transmitter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": [
+              "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

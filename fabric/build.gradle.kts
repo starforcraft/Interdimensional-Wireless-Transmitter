@@ -23,7 +23,7 @@ repositories {
 val modVersion: String by project
 
 refinedarchitect {
-    modId = "creativewirelesstransmitter"
+    modId = "interdimensionalwirelesstransmitter"
     version = modVersion
     fabric()
     publishing {
@@ -32,7 +32,7 @@ refinedarchitect {
 }
 
 base {
-    archivesName.set("creativewirelesstransmitter-fabric")
+    archivesName.set("interdimensionalwirelesstransmitter-fabric")
 }
 
 val refinedstorageVersion: String by project

@@ -1,18 +1,18 @@
 modLoader = "javafml"
 loaderVersion = "[2,)"
-issueTrackerURL = "https://github.com/starforcraft/Creative-Wireless-Transmitter/issues"
+issueTrackerURL = "https://github.com/starforcraft/Interdimensional-Wireless-Transmitter/issues"
 license = "MIT"
 [[mods]]
-modId = "creativewirelesstransmitter"
+modId = "interdimensionalwirelesstransmitter"
 version = "${version}"
-displayName = "Creative Wireless Transmitter"
-displayURL = "https://www.curseforge.com/minecraft/mc-mods/creative-wireless-transmitter"
+displayName = "Interdimensional Wireless Transmitter"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/interdimensional-wireless-transmitter"
 logoFile="logo.png"
 authors = "Ultramega"
-description = "Creative Wireless Transmitter is an addon for Refined Storage which adds a cross-dimensional transmitter with infinite range."
+description = "Interdimensional Wireless Transmitter is an addon for Refined Storage which adds a cross-dimensional transmitter with infinite range."
 
-[[dependencies.creativewirelesstransmitter]]
+[[dependencies.interdimensionalwirelesstransmitter]]
 modId = "refinedstorage"
 type = "required"
-versionRange = "2.0.0-milestone.4.10"
+versionRange = "2.0.0-milestone.4.13"
 side = "BOTH"

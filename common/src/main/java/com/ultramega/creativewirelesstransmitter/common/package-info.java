@@ -1,7 +1,0 @@
-@ParametersAreNonnullByDefault
-@FieldsAndMethodsAreNonnullByDefault
-package com.ultramega.creativewirelesstransmitter.common;
-
-import com.refinedmods.refinedstorage.api.core.FieldsAndMethodsAreNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;
