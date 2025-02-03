@@ -1,6 +1,0 @@
-{
-  "parent": "creativewirelesstransmitter:block/creative_wireless_transmitter/active",
-  "textures": {
-    "cutout": "creativewirelesstransmitter:block/creative_wireless_transmitter/cutouts/blue"
-  }
-}

@@ -8,5 +8,5 @@ refinedarchitect {
 }
 
 subprojects {
-    group = "com.ultramega.creativewirelesstransmitter"
+    group = "com.ultramega.interdimensionalwirelesstransmitter"
 }

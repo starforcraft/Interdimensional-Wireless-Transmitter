@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WNW",
+    "NEN",
+    "WNW"
+  ],
+  "key": {
+    "W": {
+      "item": "refinedstorage:wireless_transmitter"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "E": {
+      "item": "minecraft:elytra"
+    }
+  },
+  "result": {
+    "id": "interdimensionalwirelesstransmitter:interdimensional_wireless_transmitter"
+  }
+}

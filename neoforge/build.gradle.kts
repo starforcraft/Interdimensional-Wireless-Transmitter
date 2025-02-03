@@ -15,7 +15,7 @@ repositories {
 val modVersion: String by project
 
 refinedarchitect {
-    modId = "creativewirelesstransmitter"
+    modId = "interdimensionalwirelesstransmitter"
     version = modVersion
     neoForge()
     dataGeneration(project(":common"))
@@ -25,7 +25,7 @@ refinedarchitect {
 }
 
 base {
-    archivesName.set("creativewirelesstransmitter-neoforge")
+    archivesName.set("interdimensionalwirelesstransmitter-neoforge")
 }
 
 val refinedstorageVersion: String by project

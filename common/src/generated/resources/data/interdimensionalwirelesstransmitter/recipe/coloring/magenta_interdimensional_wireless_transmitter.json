@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters"
+    },
+    {
+      "tag": "c:dyes/magenta"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "interdimensionalwirelesstransmitter:magenta_interdimensional_wireless_transmitter"
+  }
+}
