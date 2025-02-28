@@ -12,8 +12,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 @SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal", "CanBeFinal"})
 public class ConfigImpl implements ConfigData, Config {
     @ConfigEntry.Gui.CollapsibleObject
-    private InterdimensionalWirelessTransmitterEntryEntryImpl
-        creativeWirelessTransmitter = new InterdimensionalWirelessTransmitterEntryEntryImpl();
+    private InterdimensionalWirelessTransmitterEntryEntryImpl interdimensionalWirelessTransmitter = new InterdimensionalWirelessTransmitterEntryEntryImpl();
 
     public static ConfigImpl get() {
         return AutoConfig.getConfigHolder(ConfigImpl.class).getConfig();
@@ -21,11 +20,10 @@ public class ConfigImpl implements ConfigData, Config {
 
     @Override
     public InterdimensionalWirelessTransmitterEntry getInterdimensionalWirelessTransmitter() {
-        return creativeWirelessTransmitter;
+        return interdimensionalWirelessTransmitter;
     }
 
-    private static class InterdimensionalWirelessTransmitterEntryEntryImpl
-        implements InterdimensionalWirelessTransmitterEntry {
+    private static class InterdimensionalWirelessTransmitterEntryEntryImpl implements InterdimensionalWirelessTransmitterEntry {
         private long energyUsage = DefaultEnergyUsage.INTERDIMENSIONAL_WIRELESS_TRANSMITTER_USAGE;
 
         @Override

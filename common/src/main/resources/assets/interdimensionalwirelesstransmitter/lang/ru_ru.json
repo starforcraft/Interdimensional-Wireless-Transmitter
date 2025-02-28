@@ -1,0 +1,12 @@
+{
+  "mod.interdimensional_wireless_transmitter": "Interdimensional Wireless Transmitter",
+  "block.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter": "Межпространственный беспроводной передатчик",
+  "gui.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.distance": "Бесконечная",
+  "item.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.help": "Обеспечивает беспроводной доступ к сети для таких предметов, как беспроводной терминал. Имеет бесконечную дальность и является межпространственным.",
+  "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter": "Interdimensional Wireless Transmitter",
+  "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter.tooltip": "Конфигурация для Interdimensional Wireless Transmitter.",
+  "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter.energyUsage": "Потребление энергии",
+  "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter.energyUsage.tooltip": "Энергия, используемая межпространственным беспроводным передатчиком.",
+  "advancements.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter": "МЕЖПРОСТРАНСТВЕННАЯ >>СИЛА<<",
+  "advancements.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.description": "Передайте сигнал сети с помощью межпространственного беспроводного передатчика меж пространственно с бесконечной дальностью"
+}

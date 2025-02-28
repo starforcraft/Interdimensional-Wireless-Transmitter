@@ -14,5 +14,5 @@ description = "Interdimensional Wireless Transmitter is an addon for Refined Sto
 [[dependencies.interdimensionalwirelesstransmitter]]
 modId = "refinedstorage"
 type = "required"
-versionRange = "2.0.0-milestone.4.13"
+versionRange = "2.0.0-milestone.4.14"
 side = "BOTH"
