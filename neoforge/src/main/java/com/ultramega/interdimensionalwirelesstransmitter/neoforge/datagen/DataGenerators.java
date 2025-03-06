@@ -1,5 +1,6 @@
 package com.ultramega.interdimensionalwirelesstransmitter.neoforge.datagen;
 
+import com.ultramega.interdimensionalwirelesstransmitter.neoforge.datagen.loot.LootTableProviderImpl;
 import com.ultramega.interdimensionalwirelesstransmitter.neoforge.datagen.recipe.RecoloringRecipeProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,6 +24,7 @@ public class DataGenerators {
         registerBlockModelProviders(e.getGenerator(), e.getExistingFileHelper());
         registerItemModelProviders(e.getGenerator(), e.getExistingFileHelper());
         registerBlockStateProviders(e.getGenerator(), e.getExistingFileHelper());
+        registerLootTableProviders(e.getGenerator(), e.getLookupProvider());
         registerRecipeProviders(e.getGenerator(), e.getLookupProvider());
         registerTagProviders(e.getGenerator(), e.getLookupProvider(), e.getExistingFileHelper());
     }
@@ -43,6 +45,12 @@ public class DataGenerators {
                                                    final ExistingFileHelper existingFileHelper) {
         final DataGenerator.PackGenerator mainPack = generator.getVanillaPack(true);
         mainPack.addProvider(output -> new ItemModelProviderImpl(output, existingFileHelper));
+    }
+
+    private static void registerLootTableProviders(final DataGenerator generator,
+                                                   final CompletableFuture<HolderLookup.Provider> provider) {
+        final DataGenerator.PackGenerator mainPack = generator.getVanillaPack(true);
+        mainPack.addProvider(output -> new LootTableProviderImpl(output, provider));
     }
 
     private static void registerRecipeProviders(final DataGenerator generator,
