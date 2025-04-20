@@ -8,18 +8,17 @@
     },
     "description": {
       "translate": "advancements.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.description"
-    }
+    },
+    "frame": "challenge"
   },
   "parent": "refinedstorage:wireless",
   "criteria": {
-    "interdimensional_wireless_transmitter": {
+    "interdimensional_wireless_transmitter_in_inventory": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": [
-              "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters"
-            ]
+            "items": "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters"
           }
         ]
       }
