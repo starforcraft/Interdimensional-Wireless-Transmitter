@@ -24,7 +24,7 @@ public class ItemModelProviderImpl extends ItemModelProvider {
     protected void registerModels() {
         final ResourceLocation base = createInterdimensionalIdentifier("block/interdimensional_wireless_transmitter/inactive");
         final ColorMap<InterdimensionalWirelessTransmitterBlock> blocks = Blocks.INSTANCE.getInterdimensionalWirelessTransmitter();
-        blocks.forEach((color, id, block) -> singleTexture(
+        blocks.forEach((color, id, block) -> this.singleTexture(
             id.getPath(),
             base,
             CUTOUT_TEXTURE_KEY,

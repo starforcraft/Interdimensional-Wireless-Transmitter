@@ -37,15 +37,15 @@ public class ModInitializerImpl extends AbstractModInitializer implements Refine
     @Override
     public void onApiAvailable(final RefinedStorageApi refinedStorageApi) {
         Platform.setConfigProvider(ConfigImpl::get);
-        registerContent();
-        registerCapabilities();
-        registerCreativeModeTabListener(refinedStorageApi);
+        this.registerContent();
+        this.registerCapabilities();
+        this.registerCreativeModeTabListener(refinedStorageApi);
     }
 
     private void registerContent() {
-        registerBlocks(new DirectRegistryCallback<>(BuiltInRegistries.BLOCK));
-        registerItems(new DirectRegistryCallback<>(BuiltInRegistries.ITEM));
-        registerBlockEntities(
+        this.registerBlocks(new DirectRegistryCallback<>(BuiltInRegistries.BLOCK));
+        this.registerItems(new DirectRegistryCallback<>(BuiltInRegistries.ITEM));
+        this.registerBlockEntities(
             new DirectRegistryCallback<>(BuiltInRegistries.BLOCK_ENTITY_TYPE),
             new BlockEntityTypeFactory() {
                 @SuppressWarnings("DataFlowIssue") // data type can be null
@@ -56,7 +56,7 @@ public class ModInitializerImpl extends AbstractModInitializer implements Refine
                 }
             }
         );
-        registerMenus(new DirectRegistryCallback<>(BuiltInRegistries.MENU), new ExtendedMenuTypeFactory() {
+        this.registerMenus(new DirectRegistryCallback<>(BuiltInRegistries.MENU), new ExtendedMenuTypeFactory() {
             @Override
             public <T extends AbstractContainerMenu, D> MenuType<T> create(final MenuSupplier<T, D> supplier,
                                                                            final StreamCodec<RegistryFriendlyByteBuf, D> streamCodec) {
@@ -66,7 +66,7 @@ public class ModInitializerImpl extends AbstractModInitializer implements Refine
     }
 
     private void registerCapabilities() {
-        registerEnergyBlockEntityProviders();
+        this.registerEnergyBlockEntityProviders();
     }
 
     private void registerEnergyBlockEntityProviders() {

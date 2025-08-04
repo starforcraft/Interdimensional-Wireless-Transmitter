@@ -18,19 +18,19 @@ class InterdimensionalWirelessTransmitterConnectionStrategy extends ColoredConne
 
     @Override
     public void addOutgoingConnections(final ConnectionSink sink) {
-        final Direction myDirection = tryExtractDirection(blockStateProvider.get());
+        final Direction myDirection = tryExtractDirection(this.blockStateProvider.get());
         if (myDirection == null) {
             return;
         }
-        sink.tryConnectInSameDimension(origin.relative(myDirection), myDirection.getOpposite());
+        sink.tryConnectInSameDimension(this.origin.relative(myDirection), myDirection.getOpposite());
     }
 
     @Override
     public boolean canAcceptIncomingConnection(final Direction incomingDirection, final BlockState connectingState) {
-        if (!colorsAllowConnecting(connectingState)) {
+        if (!this.colorsAllowConnecting(connectingState)) {
             return false;
         }
-        final Direction myDirection = tryExtractDirection(blockStateProvider.get());
+        final Direction myDirection = tryExtractDirection(this.blockStateProvider.get());
         return incomingDirection == myDirection;
     }
 }

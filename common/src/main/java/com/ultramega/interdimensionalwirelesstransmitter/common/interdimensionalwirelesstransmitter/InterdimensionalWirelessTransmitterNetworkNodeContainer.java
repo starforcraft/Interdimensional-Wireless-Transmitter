@@ -21,10 +21,10 @@ public class InterdimensionalWirelessTransmitterNetworkNodeContainer extends InW
 
     @Override
     public boolean isValid(final PlayerCoordinates coordinates) {
-        final Level level = blockEntity.getLevel();
+        final Level level = this.blockEntity.getLevel();
         if (level == null) {
             return false;
         }
-        return node.isActive();
+        return this.node.isActive();
     }
 }

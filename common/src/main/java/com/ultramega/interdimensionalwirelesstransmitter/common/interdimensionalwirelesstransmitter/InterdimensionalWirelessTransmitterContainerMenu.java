@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.util.concurrent.RateLimiter;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 
@@ -28,8 +29,8 @@ public class InterdimensionalWirelessTransmitterContainerMenu extends AbstractBa
 
     public InterdimensionalWirelessTransmitterContainerMenu(final int syncId, final Inventory playerInventory, final WirelessTransmitterData data) {
         super(Menus.INSTANCE.getInterdimensionalWirelessTransmitter(), syncId);
-        addPlayerInventory(playerInventory, 8, 55);
-        registerProperty(new ClientProperty<>(PropertyTypes.REDSTONE_MODE, RedstoneMode.IGNORE));
+        this.addPlayerInventory(playerInventory, 8, 55);
+        this.registerProperty(new ClientProperty<>(PropertyTypes.REDSTONE_MODE, RedstoneMode.IGNORE));
         this.active = data.active();
         this.interdimensionalWirelessTransmitter = null;
         this.player = playerInventory.player;
@@ -39,8 +40,8 @@ public class InterdimensionalWirelessTransmitterContainerMenu extends AbstractBa
                                                      final Inventory playerInventory,
                                                      final InterdimensionalWirelessTransmitterBlockEntity interdimensionalWirelessTransmitter) {
         super(Menus.INSTANCE.getInterdimensionalWirelessTransmitter(), syncId);
-        addPlayerInventory(playerInventory, 8, 55);
-        registerProperty(new ServerProperty<>(
+        this.addPlayerInventory(playerInventory, 8, 55);
+        this.registerProperty(new ServerProperty<>(
             PropertyTypes.REDSTONE_MODE,
             interdimensionalWirelessTransmitter::getRedstoneMode,
             interdimensionalWirelessTransmitter::setRedstoneMode
@@ -53,19 +54,27 @@ public class InterdimensionalWirelessTransmitterContainerMenu extends AbstractBa
     @Override
     public void broadcastChanges() {
         super.broadcastChanges();
-        if (interdimensionalWirelessTransmitter == null) {
+        if (this.interdimensionalWirelessTransmitter == null) {
             return;
         }
-        final boolean newActive = interdimensionalWirelessTransmitter.isActive();
-        final boolean changed = active != newActive;
-        if (changed && rangeRateLimiter.tryAcquire()) {
+        final boolean newActive = this.interdimensionalWirelessTransmitter.isActive();
+        final boolean changed = this.active != newActive;
+        if (changed && this.rangeRateLimiter.tryAcquire()) {
             this.active = newActive;
-            S2CPackets.sendWirelessTransmitterData((ServerPlayer) player, Integer.MAX_VALUE, active);
+            S2CPackets.sendWirelessTransmitterData((ServerPlayer) this.player, Integer.MAX_VALUE, this.active);
         }
     }
 
+    @Override
+    public boolean stillValid(final Player p) {
+        if (this.interdimensionalWirelessTransmitter == null) {
+            return true;
+        }
+        return Container.stillValidBlockEntity(this.interdimensionalWirelessTransmitter, p);
+    }
+
     boolean isActive() {
-        return active;
+        return this.active;
     }
 
     public void setActive(final boolean active) {

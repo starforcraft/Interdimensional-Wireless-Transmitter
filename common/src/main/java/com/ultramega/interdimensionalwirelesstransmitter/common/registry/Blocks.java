@@ -23,6 +23,6 @@ public final class Blocks {
     }
 
     public BlockColorMap<InterdimensionalWirelessTransmitterBlock, BaseBlockItem> getInterdimensionalWirelessTransmitter() {
-        return interdimensionalWirelessTransmitter;
+        return this.interdimensionalWirelessTransmitter;
     }
 }

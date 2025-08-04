@@ -28,13 +28,13 @@ public class ItemTagsProviderImpl extends ItemTagsProvider {
 
     @Override
     protected void addTags(final HolderLookup.Provider provider) {
-        addAllToTag(Tags.INTERDIMENSIONAL_WIRELESS_TRANSMITTERS,
+        this.addAllToTag(Tags.INTERDIMENSIONAL_WIRELESS_TRANSMITTERS,
             Blocks.INSTANCE.getInterdimensionalWirelessTransmitter().values().stream()
                 .map(block -> (Supplier<Item>) block::asItem)
                 .toList());
     }
 
     private <T extends Item> void addAllToTag(final TagKey<Item> t, final Collection<Supplier<T>> items) {
-        tag(t).add(items.stream().map(Supplier::get).toArray(Item[]::new)).replace(false);
+        this.tag(t).add(items.stream().map(Supplier::get).toArray(Item[]::new)).replace(false);
     }
 }

@@ -16,7 +16,7 @@ public final class Menus {
     private Supplier<MenuType<InterdimensionalWirelessTransmitterContainerMenu>> interdimensionalWirelessTransmitter;
 
     public MenuType<InterdimensionalWirelessTransmitterContainerMenu> getInterdimensionalWirelessTransmitter() {
-        return requireNonNull(interdimensionalWirelessTransmitter).get();
+        return requireNonNull(this.interdimensionalWirelessTransmitter).get();
     }
 
     public void setInterdimensionalWirelessTransmitter(final Supplier<MenuType<InterdimensionalWirelessTransmitterContainerMenu>> supplier) {

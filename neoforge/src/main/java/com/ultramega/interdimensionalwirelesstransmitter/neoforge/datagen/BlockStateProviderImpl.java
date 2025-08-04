@@ -26,19 +26,19 @@ public class BlockStateProviderImpl extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        final ModelFile inactive = modelFile(createInterdimensionalIdentifier("block/interdimensional_wireless_transmitter/inactive"));
+        final ModelFile inactive = this.modelFile(createInterdimensionalIdentifier("block/interdimensional_wireless_transmitter/inactive"));
         Blocks.INSTANCE.getInterdimensionalWirelessTransmitter().forEach((color, id, block) -> {
-            final var builder = getVariantBuilder(block.get());
+            final var builder = this.getVariantBuilder(block.get());
             builder.forAllStates(blockState -> {
                 final ConfiguredModel.Builder<?> model = ConfiguredModel.builder();
                 if (Boolean.TRUE.equals(blockState.getValue(AbstractActiveColoredDirectionalBlock.ACTIVE))) {
-                    model.modelFile(modelFile(
+                    model.modelFile(this.modelFile(
                         createInterdimensionalIdentifier("block/interdimensional_wireless_transmitter/" + color.getName())));
                 } else {
                     model.modelFile(inactive);
                 }
                 final Direction direction = blockState.getValue(DefaultDirectionType.FACE_CLICKED.getProperty());
-                addRotation(model, direction);
+                this.addRotation(model, direction);
                 return model.build();
             });
         });
@@ -57,6 +57,6 @@ public class BlockStateProviderImpl extends BlockStateProvider {
     }
 
     private ModelFile modelFile(final ResourceLocation location) {
-        return new ModelFile.ExistingModelFile(location, existingFileHelper);
+        return new ModelFile.ExistingModelFile(location, this.existingFileHelper);
     }
 }

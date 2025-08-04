@@ -21,7 +21,7 @@ public class BlockModelProviderImpl extends BlockModelProvider {
     protected void registerModels() {
         final ResourceLocation parent = createInterdimensionalIdentifier("block/interdimensional_wireless_transmitter/active");
         Blocks.INSTANCE.getInterdimensionalWirelessTransmitter().forEach((color, id, block) ->
-            withExistingParent("block/interdimensional_wireless_transmitter/" + color.getName(), parent)
+            this.withExistingParent("block/interdimensional_wireless_transmitter/" + color.getName(), parent)
                 .texture(CUTOUT_TEXTURE, createInterdimensionalIdentifier("block/interdimensional_wireless_transmitter/cutouts/" + color.getName())));
     }
 }

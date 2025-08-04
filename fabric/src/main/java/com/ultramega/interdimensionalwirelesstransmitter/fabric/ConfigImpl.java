@@ -20,7 +20,7 @@ public class ConfigImpl implements ConfigData, Config {
 
     @Override
     public InterdimensionalWirelessTransmitterEntry getInterdimensionalWirelessTransmitter() {
-        return interdimensionalWirelessTransmitter;
+        return this.interdimensionalWirelessTransmitter;
     }
 
     private static class InterdimensionalWirelessTransmitterEntryEntryImpl implements InterdimensionalWirelessTransmitterEntry {
@@ -28,7 +28,7 @@ public class ConfigImpl implements ConfigData, Config {
 
         @Override
         public long getEnergyUsage() {
-            return energyUsage;
+            return this.energyUsage;
         }
     }
 }

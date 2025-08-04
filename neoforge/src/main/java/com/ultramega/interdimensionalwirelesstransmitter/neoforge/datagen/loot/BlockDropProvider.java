@@ -23,7 +23,7 @@ public class BlockDropProvider extends BlockLootSubProvider {
     }
 
     private void drop(final Block block) {
-        add(block, createSingleItemTable(block)
+        this.add(block, this.createSingleItemTable(block)
             .apply(copyName()));
     }
 

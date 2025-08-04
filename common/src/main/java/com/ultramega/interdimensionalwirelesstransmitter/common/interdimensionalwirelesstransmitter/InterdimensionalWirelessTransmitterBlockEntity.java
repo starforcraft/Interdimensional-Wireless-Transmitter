@@ -37,13 +37,13 @@ public class InterdimensionalWirelessTransmitterBlockEntity extends AbstractBase
             this,
             networkNode,
             "main",
-            new InterdimensionalWirelessTransmitterConnectionStrategy(this::getBlockState, getBlockPos())
+            new InterdimensionalWirelessTransmitterConnectionStrategy(this::getBlockState, this.getBlockPos())
         );
     }
 
     @Override
     public Component getName() {
-        return overrideName(ContentNames.INTERDIMENSIONAL_WIRELESS_TRANSMITTER);
+        return this.overrideName(ContentNames.INTERDIMENSIONAL_WIRELESS_TRANSMITTER);
     }
 
     @Nullable
@@ -54,7 +54,7 @@ public class InterdimensionalWirelessTransmitterBlockEntity extends AbstractBase
 
     @Override
     public WirelessTransmitterData getMenuData() {
-        return new WirelessTransmitterData(Integer.MAX_VALUE, isActive());
+        return new WirelessTransmitterData(Integer.MAX_VALUE, this.isActive());
     }
 
     @Override
@@ -69,6 +69,6 @@ public class InterdimensionalWirelessTransmitterBlockEntity extends AbstractBase
     }
 
     boolean isActive() {
-        return mainNetworkNode.isActive();
+        return this.mainNetworkNode.isActive();
     }
 }

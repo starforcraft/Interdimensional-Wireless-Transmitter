@@ -16,10 +16,10 @@ public final class Items {
     }
 
     public void addInterdimensionalWirelessTransmitter(final Supplier<BaseBlockItem> supplier) {
-        allInterdimensionalWirelessTransmitters.add(supplier);
+        this.allInterdimensionalWirelessTransmitters.add(supplier);
     }
 
     public List<Supplier<BaseBlockItem>> getInterdimensionalWirelessTransmitters() {
-        return Collections.unmodifiableList(allInterdimensionalWirelessTransmitters);
+        return Collections.unmodifiableList(this.allInterdimensionalWirelessTransmitters);
     }
 }

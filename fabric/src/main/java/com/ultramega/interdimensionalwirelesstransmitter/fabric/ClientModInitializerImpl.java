@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.Block;
 public class ClientModInitializerImpl extends AbstractClientModInitializer implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        setRenderLayers();
+        this.setRenderLayers();
         registerScreens(new com.refinedmods.refinedstorage.common.AbstractClientModInitializer.ScreenRegistration() {
             @Override
             public <M extends AbstractContainerMenu, U extends Screen & MenuAccess<M>> void register(
@@ -31,7 +31,7 @@ public class ClientModInitializerImpl extends AbstractClientModInitializer imple
     }
 
     private void setRenderLayers() {
-        setCutout(Blocks.INSTANCE.getInterdimensionalWirelessTransmitter());
+        this.setCutout(Blocks.INSTANCE.getInterdimensionalWirelessTransmitter());
     }
 
     private void setCutout(final BlockColorMap<?, ?> blockMap) {

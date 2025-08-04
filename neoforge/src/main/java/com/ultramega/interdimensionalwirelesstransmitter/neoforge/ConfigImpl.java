@@ -13,17 +13,17 @@ public class ConfigImpl implements Config {
     private final InterdimensionalWirelessTransmitterEntry interdimensionalWirelessTransmitter;
 
     public ConfigImpl() {
-        interdimensionalWirelessTransmitter = new InterdimensionalWirelessTransmitterEntryImpl();
-        spec = builder.build();
+        this.interdimensionalWirelessTransmitter = new InterdimensionalWirelessTransmitterEntryImpl();
+        this.spec = this.builder.build();
     }
 
     public ModConfigSpec getSpec() {
-        return spec;
+        return this.spec;
     }
 
     @Override
     public InterdimensionalWirelessTransmitterEntry getInterdimensionalWirelessTransmitter() {
-        return interdimensionalWirelessTransmitter;
+        return this.interdimensionalWirelessTransmitter;
     }
 
     private static String translationKey(final String value) {
@@ -35,7 +35,7 @@ public class ConfigImpl implements Config {
 
         InterdimensionalWirelessTransmitterEntryImpl() {
             builder.translation(translationKey("interdimensionalWirelessTransmitter")).push("interdimensionalWirelessTransmitter");
-            energyUsage = builder
+            this.energyUsage = builder
                 .translation(translationKey("interdimensionalWirelessTransmitter.energyUsage"))
                 .defineInRange("energyUsage", DefaultEnergyUsage.INTERDIMENSIONAL_WIRELESS_TRANSMITTER_USAGE, 0, Long.MAX_VALUE);
             builder.pop();
@@ -43,7 +43,7 @@ public class ConfigImpl implements Config {
 
         @Override
         public long getEnergyUsage() {
-            return energyUsage.get();
+            return this.energyUsage.get();
         }
     }
 }

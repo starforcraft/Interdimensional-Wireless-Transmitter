@@ -26,8 +26,8 @@ public class RecoloringRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(final RecipeOutput output) {
         Blocks.INSTANCE.getInterdimensionalWirelessTransmitter().forEach((color, id, block) ->
-            recipe(Tags.INTERDIMENSIONAL_WIRELESS_TRANSMITTERS, block.get().asItem(), color)
-                .save(output, recipeId(color, "interdimensional_wireless_transmitter")));
+            this.recipe(Tags.INTERDIMENSIONAL_WIRELESS_TRANSMITTERS, block.get().asItem(), color)
+                .save(output, this.recipeId(color, "interdimensional_wireless_transmitter")));
     }
 
     private ResourceLocation recipeId(final DyeColor color, final String suffix) {

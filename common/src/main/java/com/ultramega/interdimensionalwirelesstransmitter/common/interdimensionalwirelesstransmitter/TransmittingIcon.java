@@ -5,7 +5,10 @@ import net.minecraft.resources.ResourceLocation;
 
 import static com.refinedmods.refinedstorage.common.util.IdentifierUtil.createIdentifier;
 
-class TransmittingIcon { //TODO: remove once this is public: https://github.com/refinedmods/refinedstorage2/blob/develop/refinedstorage-common/src/main/java/com/refinedmods/refinedstorage/common/networking/TransmittingIcon.java
+/**
+ * Exact copy of {@link com.refinedmods.refinedstorage.common.networking.TransmittingIcon}
+ */
+class TransmittingIcon {
     private static final int WIDTH_0 = 11;
     private static final int WIDTH_3 = 20;
     private static final int TRANSMITTING_FRAMES = 20;
@@ -24,28 +27,28 @@ class TransmittingIcon { //TODO: remove once this is public: https://github.com/
 
     void tick(final boolean newActive) {
         this.active = newActive;
-        doTick();
+        this.doTick();
     }
 
     private void doTick() {
-        if (!active) {
-            frames = 0;
-            cycle = 0;
+        if (!this.active) {
+            this.frames = 0;
+            this.cycle = 0;
             return;
         }
-        ++frames;
-        if (frames == TRANSMITTING_FRAMES) {
-            frames = 0;
-            cycle++;
+        ++this.frames;
+        if (this.frames == TRANSMITTING_FRAMES) {
+            this.frames = 0;
+            this.cycle++;
         }
     }
 
     void render(final GuiGraphics graphics, final int x3, final int y3) {
-        if (!active) {
+        if (!this.active) {
             graphics.blitSprite(NOT_TRANSMITTING, x3, y3 + 4, WIDTH_0, 4);
             return;
         }
-        final int frame = cycle % 3;
+        final int frame = this.cycle % 3;
         switch (frame) {
             case 1:
                 graphics.blitSprite(TRANSMITTING_2, x3, y3 + 1, 17, 10);
@@ -61,6 +64,6 @@ class TransmittingIcon { //TODO: remove once this is public: https://github.com/
     }
 
     int getWidth() {
-        return active ? WIDTH_3 : WIDTH_0;
+        return this.active ? WIDTH_3 : WIDTH_0;
     }
 }

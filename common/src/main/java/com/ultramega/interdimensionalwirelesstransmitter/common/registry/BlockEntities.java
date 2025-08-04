@@ -16,7 +16,7 @@ public final class BlockEntities {
     private Supplier<BlockEntityType<InterdimensionalWirelessTransmitterBlockEntity>> interdimensionalWirelessTransmitter;
 
     public BlockEntityType<InterdimensionalWirelessTransmitterBlockEntity> getInterdimensionalWirelessTransmitter() {
-        return requireNonNull(interdimensionalWirelessTransmitter).get();
+        return requireNonNull(this.interdimensionalWirelessTransmitter).get();
     }
 
     public void setInterdimensionalWirelessTransmitter(final Supplier<BlockEntityType<InterdimensionalWirelessTransmitterBlockEntity>> supplier) {

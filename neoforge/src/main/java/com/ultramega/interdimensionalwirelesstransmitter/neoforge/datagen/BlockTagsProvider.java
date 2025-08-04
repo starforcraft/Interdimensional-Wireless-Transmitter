@@ -28,11 +28,11 @@ public class BlockTagsProvider extends TagsProvider<Block> {
 
     @Override
     protected void addTags(final HolderLookup.Provider provider) {
-        markAsMineable(Blocks.INSTANCE.getInterdimensionalWirelessTransmitter());
+        this.markAsMineable(Blocks.INSTANCE.getInterdimensionalWirelessTransmitter());
     }
 
     private void markAsMineable(final BlockColorMap<?, ?> map) {
-        tag(MINEABLE).addAll(map.values().stream().map(b -> ResourceKey.create(
+        this.tag(MINEABLE).addAll(map.values().stream().map(b -> ResourceKey.create(
             Registries.BLOCK,
             BuiltInRegistries.BLOCK.getKey(b)
         )).toList());

@@ -27,19 +27,19 @@ public class InterdimensionalWirelessTransmitterScreen extends AbstractBaseScree
         this.inventoryLabelY = 43;
         this.imageWidth = 176;
         this.imageHeight = 137;
-        this.icon = new TransmittingIcon(getMenu().isActive());
+        this.icon = new TransmittingIcon(this.getMenu().isActive());
     }
 
     @Override
     protected void init() {
         super.init();
-        addSideButton(new RedstoneModeSideButtonWidget(getMenu().getProperty(PropertyTypes.REDSTONE_MODE)));
+        this.addSideButton(new RedstoneModeSideButtonWidget(this.getMenu().getProperty(PropertyTypes.REDSTONE_MODE)));
     }
 
     @Override
     protected void containerTick() {
         super.containerTick();
-        icon.tick(getMenu().isActive());
+        this.icon.tick(this.getMenu().isActive());
     }
 
     @Override
@@ -51,20 +51,20 @@ public class InterdimensionalWirelessTransmitterScreen extends AbstractBaseScree
     protected void renderBg(final GuiGraphics graphics, final float delta, final int mouseX, final int mouseY) {
         super.renderBg(graphics, delta, mouseX, mouseY);
 
-        icon.render(graphics, leftPos + 7, topPos + 22);
+        this.icon.render(graphics, this.leftPos + 7, this.topPos + 22);
     }
 
     @Override
     protected void renderLabels(final GuiGraphics graphics, final int mouseX, final int mouseY) {
         super.renderLabels(graphics, mouseX, mouseY);
-        if (!getMenu().isActive()) {
-            graphics.drawString(font, INACTIVE, 7 + icon.getWidth() + 4, 25, 4210752, false);
+        if (!this.getMenu().isActive()) {
+            graphics.drawString(this.font, INACTIVE, 7 + this.icon.getWidth() + 4, 25, 4210752, false);
             return;
         }
         graphics.drawString(
-            font,
+            this.font,
             createInterdimensionalTranslation("gui", "interdimensional_wireless_transmitter.distance"),
-            7 + icon.getWidth() + 4,
+            7 + this.icon.getWidth() + 4,
             25,
             4210752,
             false

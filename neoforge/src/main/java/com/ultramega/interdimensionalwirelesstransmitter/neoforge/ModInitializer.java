@@ -59,33 +59,33 @@ public class ModInitializer extends AbstractModInitializer {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
             eventBus.addListener(ClientModInitializer::onRegisterMenuScreens);
         }
-        registerContent(eventBus);
+        this.registerContent(eventBus);
         eventBus.addListener(this::registerCapabilities);
         eventBus.addListener(this::registerCreativeModeTabListener);
     }
 
     private void registerContent(final IEventBus eventBus) {
-        registerBlocks(eventBus);
-        registerItems(eventBus);
-        registerBlockEntities(eventBus);
-        registerMenus(eventBus);
+        this.registerBlocks(eventBus);
+        this.registerItems(eventBus);
+        this.registerBlockEntities(eventBus);
+        this.registerMenus(eventBus);
     }
 
     private void registerBlocks(final IEventBus eventBus) {
-        final RegistryCallback<Block> callback = new ForgeRegistryCallback<>(blockRegistry);
-        registerBlocks(callback);
-        blockRegistry.register(eventBus);
+        final RegistryCallback<Block> callback = new ForgeRegistryCallback<>(this.blockRegistry);
+        this.registerBlocks(callback);
+        this.blockRegistry.register(eventBus);
     }
 
     private void registerItems(final IEventBus eventBus) {
-        final RegistryCallback<Item> callback = new ForgeRegistryCallback<>(itemRegistry);
-        registerItems(callback);
-        itemRegistry.register(eventBus);
+        final RegistryCallback<Item> callback = new ForgeRegistryCallback<>(this.itemRegistry);
+        this.registerItems(callback);
+        this.itemRegistry.register(eventBus);
     }
 
     private void registerBlockEntities(final IEventBus eventBus) {
-        registerBlockEntities(
-            new ForgeRegistryCallback<>(blockEntityTypeRegistry),
+        this.registerBlockEntities(
+            new ForgeRegistryCallback<>(this.blockEntityTypeRegistry),
             new BlockEntityTypeFactory() {
                 @SuppressWarnings("DataFlowIssue") // data type can be null
                 @Override
@@ -95,11 +95,11 @@ public class ModInitializer extends AbstractModInitializer {
                 }
             }
         );
-        blockEntityTypeRegistry.register(eventBus);
+        this.blockEntityTypeRegistry.register(eventBus);
     }
 
     private void registerMenus(final IEventBus eventBus) {
-        registerMenus(new ForgeRegistryCallback<>(menuTypeRegistry), new ExtendedMenuTypeFactory() {
+        this.registerMenus(new ForgeRegistryCallback<>(this.menuTypeRegistry), new ExtendedMenuTypeFactory() {
             @Override
             public <T extends AbstractContainerMenu, D> MenuType<T> create(final MenuSupplier<T, D> supplier,
                                                                            final StreamCodec<RegistryFriendlyByteBuf, D>
@@ -110,11 +110,11 @@ public class ModInitializer extends AbstractModInitializer {
                 });
             }
         });
-        menuTypeRegistry.register(eventBus);
+        this.menuTypeRegistry.register(eventBus);
     }
 
     private void registerCapabilities(final RegisterCapabilitiesEvent event) {
-        registerEnergyBlockEntityProviders(event);
+        this.registerEnergyBlockEntityProviders(event);
     }
 
     private void registerEnergyBlockEntityProviders(final RegisterCapabilitiesEvent event) {
@@ -145,7 +145,7 @@ public class ModInitializer extends AbstractModInitializer {
     private record ForgeRegistryCallback<T>(DeferredRegister<T> registry) implements RegistryCallback<T> {
         @Override
         public <R extends T> Supplier<R> register(final ResourceLocation id, final Supplier<R> value) {
-            return registry.register(id.getPath(), value);
+            return this.registry.register(id.getPath(), value);
         }
     }
 }
