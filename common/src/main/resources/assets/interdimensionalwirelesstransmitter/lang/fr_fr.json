@@ -1,7 +1,7 @@
 {
   "mod.interdimensional_wireless_transmitter": "Transmetteur sans fil interdimensionnel",
   "block.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter": "Transmetteur sans fil interdimensionnel",
-  "gui.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.distance": "Infinie",
+  "gui.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.distance": "Plage infinie",
   "item.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.help": "Fournit un accès au réseau sans fil pour des objets comme la grille sans fil. A une portée infini et fonctionne entre les dimensions",
   "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter": "Transmetteur sans fil interdimensionnel",
   "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter.tooltip": "Configuration du Transmetteur sans fil interdimensionnel.",

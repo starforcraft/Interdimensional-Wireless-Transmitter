@@ -4,7 +4,7 @@ import com.ultramega.interdimensionalwirelesstransmitter.common.registry.BlockEn
 import com.ultramega.interdimensionalwirelesstransmitter.common.registry.Blocks;
 
 import com.refinedmods.refinedstorage.common.content.BlockColorMap;
-import com.refinedmods.refinedstorage.common.content.BlockConstants;
+import com.refinedmods.refinedstorage.common.content.BlockProperties;
 import com.refinedmods.refinedstorage.common.support.AbstractActiveColoredDirectionalBlock;
 import com.refinedmods.refinedstorage.common.support.AbstractBlockEntityTicker;
 import com.refinedmods.refinedstorage.common.support.BaseBlockItem;
@@ -14,12 +14,11 @@ import com.refinedmods.refinedstorage.common.support.direction.DefaultDirectionT
 import com.refinedmods.refinedstorage.common.support.direction.DirectionType;
 import com.refinedmods.refinedstorage.common.support.network.NetworkNodeBlockEntityTicker;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -31,6 +30,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jspecify.annotations.Nullable;
 
 import static com.ultramega.interdimensionalwirelesstransmitter.common.InterdimensionalIdentifierUtil.createInterdimensionalTranslation;
 
@@ -48,8 +48,11 @@ public class InterdimensionalWirelessTransmitterBlock
     private static final VoxelShape SHAPE_NORTH = box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 11.0D);
     private static final VoxelShape SHAPE_SOUTH = box(6.0D, 6.0D, 5.0D, 10.0D, 10.0D, 16.0D);
 
-    public InterdimensionalWirelessTransmitterBlock(final DyeColor color, final MutableComponent name) {
-        super(BlockConstants.PROPERTIES, color, name);
+    private final Identifier id;
+
+    public InterdimensionalWirelessTransmitterBlock(final Identifier id, final DyeColor color, final MutableComponent name) {
+        super(BlockProperties.stone(id), color, name);
+        this.id = id;
     }
 
     @Override
@@ -59,7 +62,7 @@ public class InterdimensionalWirelessTransmitterBlock
 
     @Override
     public VoxelShape getShape(final BlockState state, final BlockGetter world, final BlockPos pos, final CollisionContext context) {
-        final Direction direction = getDirection(state);
+        final Direction direction = this.getDirection(state);
         if (direction == null) {
             return Shapes.empty();
         }
@@ -92,6 +95,6 @@ public class InterdimensionalWirelessTransmitterBlock
 
     @Override
     public BaseBlockItem createBlockItem() {
-        return new NetworkNodeBlockItem(this, HELP);
+        return new NetworkNodeBlockItem(this.id, this, HELP);
     }
 }

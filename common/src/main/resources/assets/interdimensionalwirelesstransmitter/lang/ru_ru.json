@@ -1,7 +1,7 @@
 {
   "mod.interdimensional_wireless_transmitter": "Interdimensional Wireless Transmitter",
   "block.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter": "Межпространственный беспроводной передатчик",
-  "gui.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.distance": "Бесконечная",
+  "gui.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.distance": "Бесконечный диапазон",
   "item.interdimensionalwirelesstransmitter.interdimensional_wireless_transmitter.help": "Обеспечивает беспроводной доступ к сети для таких предметов, как беспроводной терминал. Имеет бесконечную дальность и является межпространственным.",
   "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter": "Interdimensional Wireless Transmitter",
   "text.autoconfig.interdimensionalwirelesstransmitter.option.interdimensionalWirelessTransmitter.tooltip": "Конфигурация для Interdimensional Wireless Transmitter.",

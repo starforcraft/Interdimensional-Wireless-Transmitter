@@ -11,34 +11,33 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 
-import static com.ultramega.interdimensionalwirelesstransmitter.common.InterdimensionalIdentifierUtil.createInterdimensionalIdentifier;
+import static com.ultramega.interdimensionalwirelesstransmitter.common.InterdimensionalIdentifierUtil.MOD_ID;
 
 public class RecoloringRecipeProvider extends RecipeProvider {
-    public RecoloringRecipeProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries);
+    public RecoloringRecipeProvider(final HolderLookup.Provider registries, final RecipeOutput output) {
+        super(registries, output);
     }
 
     @Override
-    protected void buildRecipes(final RecipeOutput output) {
+    protected void buildRecipes() {
         Blocks.INSTANCE.getInterdimensionalWirelessTransmitter().forEach((color, id, block) ->
             this.recipe(Tags.INTERDIMENSIONAL_WIRELESS_TRANSMITTERS, block.get().asItem(), color)
-                .save(output, this.recipeId(color, "interdimensional_wireless_transmitter")));
+                .save(this.output, this.recipeId(color, "interdimensional_wireless_transmitter")));
     }
 
-    private ResourceLocation recipeId(final DyeColor color, final String suffix) {
-        return createInterdimensionalIdentifier("coloring/" + color.getName() + "_" + suffix);
+    private String recipeId(final DyeColor color, final String suffix) {
+        return MOD_ID + ":coloring/" + color.getName() + "_" + suffix;
     }
 
     private ShapelessRecipeBuilder recipe(final TagKey<Item> dyeable, final Item result, final DyeColor color) {
-        return ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result)
+        return ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, result)
             .requires(dyeable)
             .requires(getDyeTag(color))
-            .unlockedBy("has_" + dyeable.location().getPath(), has(dyeable));
+            .unlockedBy("has_" + dyeable.location().getPath(), this.has(dyeable));
     }
 
     private static TagKey<Item> getDyeTag(final DyeColor color) {
@@ -60,5 +59,22 @@ public class RecoloringRecipeProvider extends RecipeProvider {
             case GREEN -> net.neoforged.neoforge.common.Tags.Items.DYES_GREEN;
             case BLACK -> net.neoforged.neoforge.common.Tags.Items.DYES_BLACK;
         };
+    }
+
+    public static final class Runner extends RecipeProvider.Runner {
+        public Runner(final PackOutput packOutput, final CompletableFuture<HolderLookup.Provider> registries) {
+            super(packOutput, registries);
+        }
+
+        @Override
+        protected RecipeProvider createRecipeProvider(final HolderLookup.Provider registries,
+                                                      final RecipeOutput output) {
+            return new RecoloringRecipeProvider(registries, output);
+        }
+
+        @Override
+        public String getName() {
+            return "Interdimensional Wireless Transmitter recoloring recipes";
+        }
     }
 }

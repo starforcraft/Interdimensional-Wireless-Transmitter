@@ -3,9 +3,9 @@ package com.ultramega.interdimensionalwirelesstransmitter.common.registry;
 import com.ultramega.interdimensionalwirelesstransmitter.common.interdimensionalwirelesstransmitter.InterdimensionalWirelessTransmitterContainerMenu;
 
 import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
 import net.minecraft.world.inventory.MenuType;
+import org.jspecify.annotations.Nullable;
 
 import static java.util.Objects.requireNonNull;
 

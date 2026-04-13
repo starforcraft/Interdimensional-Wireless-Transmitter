@@ -34,11 +34,11 @@ public class ConfigImpl implements Config {
         private final ModConfigSpec.LongValue energyUsage;
 
         InterdimensionalWirelessTransmitterEntryImpl() {
-            builder.translation(translationKey("interdimensionalWirelessTransmitter")).push("interdimensionalWirelessTransmitter");
-            this.energyUsage = builder
+            ConfigImpl.this.builder.translation(translationKey("interdimensionalWirelessTransmitter")).push("interdimensionalWirelessTransmitter");
+            this.energyUsage = ConfigImpl.this.builder
                 .translation(translationKey("interdimensionalWirelessTransmitter.energyUsage"))
                 .defineInRange("energyUsage", DefaultEnergyUsage.INTERDIMENSIONAL_WIRELESS_TRANSMITTER_USAGE, 0, Long.MAX_VALUE);
-            builder.pop();
+            ConfigImpl.this.builder.pop();
         }
 
         @Override

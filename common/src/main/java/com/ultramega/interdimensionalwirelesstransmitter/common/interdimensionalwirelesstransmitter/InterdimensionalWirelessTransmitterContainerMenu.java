@@ -10,13 +10,12 @@ import com.refinedmods.refinedstorage.common.support.containermenu.PropertyTypes
 import com.refinedmods.refinedstorage.common.support.containermenu.ServerProperty;
 import com.refinedmods.refinedstorage.common.support.packet.s2c.S2CPackets;
 
-import javax.annotation.Nullable;
-
 import com.google.common.util.concurrent.RateLimiter;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import org.jspecify.annotations.Nullable;
 
 public class InterdimensionalWirelessTransmitterContainerMenu extends AbstractBaseContainerMenu {
     private final RateLimiter rangeRateLimiter = RateLimiter.create(4);

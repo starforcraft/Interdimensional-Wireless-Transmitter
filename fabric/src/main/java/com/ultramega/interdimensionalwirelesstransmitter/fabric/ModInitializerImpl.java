@@ -13,14 +13,12 @@ import com.refinedmods.refinedstorage.common.content.ExtendedMenuTypeFactory;
 import com.refinedmods.refinedstorage.fabric.api.RefinedStorageFabricApi;
 import com.refinedmods.refinedstorage.fabric.api.RefinedStoragePlugin;
 
-import java.util.Arrays;
-import java.util.HashSet;
-
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.menu.v1.ExtendedMenuType;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -48,11 +46,10 @@ public class ModInitializerImpl extends AbstractModInitializer implements Refine
         this.registerBlockEntities(
             new DirectRegistryCallback<>(BuiltInRegistries.BLOCK_ENTITY_TYPE),
             new BlockEntityTypeFactory() {
-                @SuppressWarnings("DataFlowIssue") // data type can be null
                 @Override
                 public <T extends BlockEntity> BlockEntityType<T> create(final BlockEntityProvider<T> factory,
                                                                          final Block... allowedBlocks) {
-                    return new BlockEntityType<>(factory::create, new HashSet<>(Arrays.asList(allowedBlocks)), null);
+                    return FabricBlockEntityTypeBuilder.create(factory::create, allowedBlocks).build();
                 }
             }
         );
@@ -60,7 +57,7 @@ public class ModInitializerImpl extends AbstractModInitializer implements Refine
             @Override
             public <T extends AbstractContainerMenu, D> MenuType<T> create(final MenuSupplier<T, D> supplier,
                                                                            final StreamCodec<RegistryFriendlyByteBuf, D> streamCodec) {
-                return new ExtendedScreenHandlerType<>(supplier::create, streamCodec);
+                return new ExtendedMenuType<>(supplier::create, streamCodec);
             }
         });
     }
@@ -81,7 +78,7 @@ public class ModInitializerImpl extends AbstractModInitializer implements Refine
             Registries.CREATIVE_MODE_TAB,
             refinedStorageApi.getCreativeModeTabId()
         );
-        ItemGroupEvents.modifyEntriesEvent(creativeModeTab).register(
+        CreativeModeTabEvents.modifyOutputEvent(creativeModeTab).register(
             entries -> CreativeModeTabItems.appendBlocks(entries::accept)
         );
 
@@ -89,7 +86,7 @@ public class ModInitializerImpl extends AbstractModInitializer implements Refine
             Registries.CREATIVE_MODE_TAB,
             refinedStorageApi.getColoredCreativeModeTabId()
         );
-        ItemGroupEvents.modifyEntriesEvent(coloredCreativeModeTab).register(
+        CreativeModeTabEvents.modifyOutputEvent(coloredCreativeModeTab).register(
             entries -> CreativeModeTabItems.appendColoredVariants(entries::accept)
         );
     }

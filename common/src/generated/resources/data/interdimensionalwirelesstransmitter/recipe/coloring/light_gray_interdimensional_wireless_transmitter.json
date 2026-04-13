@@ -2,15 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters"
-    },
-    {
-      "tag": "c:dyes/light_gray"
-    }
+    "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
+    "#c:dyes/light_gray"
   ],
   "result": {
-    "count": 1,
     "id": "interdimensionalwirelesstransmitter:light_gray_interdimensional_wireless_transmitter"
   }
 }

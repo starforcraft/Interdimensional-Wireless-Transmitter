@@ -20,8 +20,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -55,7 +55,7 @@ public class ModInitializer extends AbstractModInitializer {
         final ConfigImpl config = new ConfigImpl();
         modContainer.registerConfig(ModConfig.Type.COMMON, config.getSpec());
         Platform.setConfigProvider(() -> config);
-        if (FMLEnvironment.dist == Dist.CLIENT) {
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
             eventBus.addListener(ClientModInitializer::onRegisterMenuScreens);
         }
@@ -87,11 +87,10 @@ public class ModInitializer extends AbstractModInitializer {
         this.registerBlockEntities(
             new ForgeRegistryCallback<>(this.blockEntityTypeRegistry),
             new BlockEntityTypeFactory() {
-                @SuppressWarnings("DataFlowIssue") // data type can be null
                 @Override
                 public <T extends BlockEntity> BlockEntityType<T> create(final BlockEntityProvider<T> factory,
                                                                          final Block... allowedBlocks) {
-                    return new BlockEntityType<>(factory::create, new HashSet<>(Arrays.asList(allowedBlocks)), null);
+                    return new BlockEntityType<>(factory::create, new HashSet<>(Arrays.asList(allowedBlocks)));
                 }
             }
         );
@@ -144,7 +143,7 @@ public class ModInitializer extends AbstractModInitializer {
 
     private record ForgeRegistryCallback<T>(DeferredRegister<T> registry) implements RegistryCallback<T> {
         @Override
-        public <R extends T> Supplier<R> register(final ResourceLocation id, final Supplier<R> value) {
+        public <R extends T> Supplier<R> register(final Identifier id, final Supplier<R> value) {
             return this.registry.register(id.getPath(), value);
         }
     }

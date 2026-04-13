@@ -1,6 +1,0 @@
-{
-  "parent": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/inactive",
-  "textures": {
-    "cutout": "interdimensionalwirelesstransmitter:block/interdimensional_wireless_transmitter/cutouts/purple"
-  }
-}
