@@ -1,11 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
-    "#c:dyes/black"
-  ],
-  "result": {
-    "id": "interdimensionalwirelesstransmitter:black_interdimensional_wireless_transmitter"
-  }
+  "type": "refinedstorage:recoloring",
+  "color": "black",
+  "ingredient": "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
+  "result": "interdimensionalwirelesstransmitter:black_interdimensional_wireless_transmitter"
 }

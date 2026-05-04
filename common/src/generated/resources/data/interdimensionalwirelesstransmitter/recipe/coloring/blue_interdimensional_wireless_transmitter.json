@@ -1,11 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
-    "#c:dyes/blue"
-  ],
-  "result": {
-    "id": "interdimensionalwirelesstransmitter:blue_interdimensional_wireless_transmitter"
-  }
+  "type": "refinedstorage:recoloring",
+  "color": "blue",
+  "ingredient": "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
+  "result": "interdimensionalwirelesstransmitter:blue_interdimensional_wireless_transmitter"
 }

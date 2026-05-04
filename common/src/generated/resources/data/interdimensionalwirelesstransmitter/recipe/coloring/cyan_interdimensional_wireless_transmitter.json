@@ -1,11 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
-    "#c:dyes/cyan"
-  ],
-  "result": {
-    "id": "interdimensionalwirelesstransmitter:cyan_interdimensional_wireless_transmitter"
-  }
+  "type": "refinedstorage:recoloring",
+  "color": "cyan",
+  "ingredient": "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
+  "result": "interdimensionalwirelesstransmitter:cyan_interdimensional_wireless_transmitter"
 }

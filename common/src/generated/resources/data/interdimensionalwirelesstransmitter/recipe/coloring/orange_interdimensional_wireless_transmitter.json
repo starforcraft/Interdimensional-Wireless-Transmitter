@@ -1,11 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
-    "#c:dyes/orange"
-  ],
-  "result": {
-    "id": "interdimensionalwirelesstransmitter:orange_interdimensional_wireless_transmitter"
-  }
+  "type": "refinedstorage:recoloring",
+  "color": "orange",
+  "ingredient": "#interdimensionalwirelesstransmitter:interdimensional_wireless_transmitters",
+  "result": "interdimensionalwirelesstransmitter:orange_interdimensional_wireless_transmitter"
 }

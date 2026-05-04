@@ -97,4 +97,9 @@ public class InterdimensionalWirelessTransmitterBlock
     public BaseBlockItem createBlockItem() {
         return new NetworkNodeBlockItem(this.id, this, HELP);
     }
+
+    @Override
+    protected boolean shouldChangedStateKeepBlockEntity(final BlockState oldState) {
+        return oldState.getBlock() instanceof InterdimensionalWirelessTransmitterBlock;
+    }
 }

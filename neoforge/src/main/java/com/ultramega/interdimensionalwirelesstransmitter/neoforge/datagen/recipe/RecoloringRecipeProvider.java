@@ -3,19 +3,21 @@ package com.ultramega.interdimensionalwirelesstransmitter.neoforge.datagen.recip
 import com.ultramega.interdimensionalwirelesstransmitter.common.Tags;
 import com.ultramega.interdimensionalwirelesstransmitter.common.registry.Blocks;
 
+import com.refinedmods.refinedstorage.common.support.RecoloringRecipe;
+
 import java.util.concurrent.CompletableFuture;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.tags.TagKey;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Recipe;
 
-import static com.ultramega.interdimensionalwirelesstransmitter.common.InterdimensionalIdentifierUtil.MOD_ID;
+import static com.ultramega.interdimensionalwirelesstransmitter.common.InterdimensionalIdentifierUtil.createInterdimensionalIdentifier;
 
 public class RecoloringRecipeProvider extends RecipeProvider {
     public RecoloringRecipeProvider(final HolderLookup.Provider registries, final RecipeOutput output) {
@@ -25,40 +27,13 @@ public class RecoloringRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
         Blocks.INSTANCE.getInterdimensionalWirelessTransmitter().forEach((color, id, block) ->
-            this.recipe(Tags.INTERDIMENSIONAL_WIRELESS_TRANSMITTERS, block.get().asItem(), color)
-                .save(this.output, this.recipeId(color, "interdimensional_wireless_transmitter")));
+            this.output.accept(this.recipeId(color, "interdimensional_wireless_transmitter"),
+                RecoloringRecipe.create(Tags.INTERDIMENSIONAL_WIRELESS_TRANSMITTERS, color, block.get(), this.registries), null));
     }
 
-    private String recipeId(final DyeColor color, final String suffix) {
-        return MOD_ID + ":coloring/" + color.getName() + "_" + suffix;
-    }
-
-    private ShapelessRecipeBuilder recipe(final TagKey<Item> dyeable, final Item result, final DyeColor color) {
-        return ShapelessRecipeBuilder.shapeless(this.items, RecipeCategory.MISC, result)
-            .requires(dyeable)
-            .requires(getDyeTag(color))
-            .unlockedBy("has_" + dyeable.location().getPath(), this.has(dyeable));
-    }
-
-    private static TagKey<Item> getDyeTag(final DyeColor color) {
-        return switch (color) {
-            case RED -> net.neoforged.neoforge.common.Tags.Items.DYES_RED;
-            case WHITE -> net.neoforged.neoforge.common.Tags.Items.DYES_WHITE;
-            case ORANGE -> net.neoforged.neoforge.common.Tags.Items.DYES_ORANGE;
-            case MAGENTA -> net.neoforged.neoforge.common.Tags.Items.DYES_MAGENTA;
-            case LIGHT_BLUE -> net.neoforged.neoforge.common.Tags.Items.DYES_LIGHT_BLUE;
-            case YELLOW -> net.neoforged.neoforge.common.Tags.Items.DYES_YELLOW;
-            case LIME -> net.neoforged.neoforge.common.Tags.Items.DYES_LIME;
-            case PINK -> net.neoforged.neoforge.common.Tags.Items.DYES_PINK;
-            case GRAY -> net.neoforged.neoforge.common.Tags.Items.DYES_GRAY;
-            case LIGHT_GRAY -> net.neoforged.neoforge.common.Tags.Items.DYES_LIGHT_GRAY;
-            case CYAN -> net.neoforged.neoforge.common.Tags.Items.DYES_CYAN;
-            case PURPLE -> net.neoforged.neoforge.common.Tags.Items.DYES_PURPLE;
-            case BLUE -> net.neoforged.neoforge.common.Tags.Items.DYES_BLUE;
-            case BROWN -> net.neoforged.neoforge.common.Tags.Items.DYES_BROWN;
-            case GREEN -> net.neoforged.neoforge.common.Tags.Items.DYES_GREEN;
-            case BLACK -> net.neoforged.neoforge.common.Tags.Items.DYES_BLACK;
-        };
+    private ResourceKey<Recipe<?>> recipeId(final DyeColor color, final String suffix) {
+        final Identifier recipeId = createInterdimensionalIdentifier("coloring/" + color.getName() + "_" + suffix);
+        return ResourceKey.create(Registries.RECIPE, recipeId);
     }
 
     public static final class Runner extends RecipeProvider.Runner {
